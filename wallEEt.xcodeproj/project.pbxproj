@@ -12,6 +12,7 @@
 		5C3EFA4A1F57019D00CE929F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA481F57019D00CE929F /* Main.storyboard */; };
 		5C3EFA4C1F57019D00CE929F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA4B1F57019D00CE929F /* Assets.xcassets */; };
 		5C3EFA4F1F57019D00CE929F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA4D1F57019D00CE929F /* LaunchScreen.storyboard */; };
+		8F801D75937A0F2341481D31 /* Pods_wallEEt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA34B22246467AFE5E5DCE4 /* Pods_wallEEt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		5C3EFA4B1F57019D00CE929F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C3EFA4E1F57019D00CE929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C3EFA501F57019D00CE929F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FECE86DEDB81B18D3782533 /* Pods-wallEEt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallEEt.release.xcconfig"; path = "Pods/Target Support Files/Pods-wallEEt/Pods-wallEEt.release.xcconfig"; sourceTree = "<group>"; };
+		6DA34B22246467AFE5E5DCE4 /* Pods_wallEEt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wallEEt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83CDF8100A4D0150A0559E42 /* Pods-wallEEt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallEEt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wallEEt/Pods-wallEEt.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F801D75937A0F2341481D31 /* Pods_wallEEt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D2222F2F31DA0CC8C8F5349 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83CDF8100A4D0150A0559E42 /* Pods-wallEEt.debug.xcconfig */,
+				5FECE86DEDB81B18D3782533 /* Pods-wallEEt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5C3EFA381F57019D00CE929F = {
 			isa = PBXGroup;
 			children = (
 				5C3EFA431F57019D00CE929F /* wallEEt */,
 				5C3EFA421F57019D00CE929F /* Products */,
+				1D2222F2F31DA0CC8C8F5349 /* Pods */,
+				AABE4D33472B7D5324B3C115 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = wallEEt;
 			sourceTree = "<group>";
 		};
+		AABE4D33472B7D5324B3C115 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DA34B22246467AFE5E5DCE4 /* Pods_wallEEt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C3EFA531F57019D00CE929F /* Build configuration list for PBXNativeTarget "wallEEt" */;
 			buildPhases = (
+				84B52E89B7420CC318DD1D8F /* [CP] Check Pods Manifest.lock */,
 				5C3EFA3D1F57019D00CE929F /* Sources */,
 				5C3EFA3E1F57019D00CE929F /* Frameworks */,
 				5C3EFA3F1F57019D00CE929F /* Resources */,
+				FF8DF9D757253791A130BB22 /* [CP] Embed Pods Frameworks */,
+				585E7C41584066E6643E9893 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		585E7C41584066E6643E9893 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wallEEt/Pods-wallEEt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84B52E89B7420CC318DD1D8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FF8DF9D757253791A130BB22 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wallEEt/Pods-wallEEt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5C3EFA3D1F57019D00CE929F /* Sources */ = {
@@ -261,6 +336,7 @@
 		};
 		5C3EFA541F57019D00CE929F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CDF8100A4D0150A0559E42 /* Pods-wallEEt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4PHWUSXY3;
@@ -276,6 +352,7 @@
 		};
 		5C3EFA551F57019D00CE929F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FECE86DEDB81B18D3782533 /* Pods-wallEEt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S4PHWUSXY3;

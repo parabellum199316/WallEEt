@@ -1,0 +1,6 @@
+framework module Pods_wallEEt {
+  umbrella header "Pods-wallEEt-umbrella.h"
+
+  export *
+  module * { export * }
+}
