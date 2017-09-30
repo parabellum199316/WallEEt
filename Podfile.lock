@@ -1,24 +1,24 @@
 PODS:
-  - Charts (3.0.2):
-    - Charts/Core (= 3.0.2)
-  - Charts/Core (3.0.2)
+  - Charts (3.0.4):
+    - Charts/Core (= 3.0.4)
+  - Charts/Core (3.0.4)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
-  - SnapKit (3.2.0)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
-  - Charts
-  - RxCocoa (~> 3.0)
-  - RxSwift (~> 3.0)
-  - SnapKit (~> 3.2.0)
+  - Charts (~> 3.0.4)
+  - RxCocoa (~> 3.6.1)
+  - RxSwift (~> 3.6.1)
+  - SnapKit (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
+  Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: ac70de8cd163054d41f166bcfbcce37666515714
+PODFILE CHECKSUM: ddb1d01095c6e0ce30102d73c6383d31a1728149
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

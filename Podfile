@@ -6,9 +6,9 @@ target 'wallEEt' do
   use_frameworks!
 
   # Pods for wallEEt
-	pod 'Charts'
-	pod 'RxSwift',    '~> 3.0'
-    pod 'RxCocoa',    '~> 3.0'
-	pod 'SnapKit', '~> 3.2.0'
+	pod 'Charts’, '~> 3.0.4'
+	pod 'RxSwift', '~> 3.6.1'
+    	pod 'RxCocoa', '~> 3.6.1'
+	pod 'SnapKit', '~> 4.0.0'
 
 end
