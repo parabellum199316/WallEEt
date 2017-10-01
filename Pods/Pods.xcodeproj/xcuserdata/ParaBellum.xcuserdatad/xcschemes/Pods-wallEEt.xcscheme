@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '33111F33C48B47839E0523C2C4ECEAD1'
+               BlueprintIdentifier = '8DA4EA8A80A636D5495350C567685863'
                BlueprintName = 'Pods-wallEEt'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-wallEEt.framework'>
