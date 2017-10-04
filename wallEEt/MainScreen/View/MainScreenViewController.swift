@@ -11,10 +11,9 @@ import UIKit
 class MainScreenViewController: UIViewController {
     var viewModel: MainScreenViewModelType!
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = viewModel.stringToShow
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func toDetailsVC(_ sender: Any) {

@@ -8,14 +8,18 @@
 
 import UIKit
 class  MainScreenCoordinator: Coordinator {
+    var viewModel:MainScreenViewModelType!
+    var vc:MainScreenViewController!
     func start(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let mainVC = storyboard.instantiateViewController(withIdentifier: "MainScreen") as? MainScreenViewController {
+            vc = mainVC
             let VM = MainScreenViewModel()
             VM.coordinatorDelegate = self
             mainVC.viewModel = VM
+            viewModel = VM
             navController?.pushViewController(mainVC, animated: true)
-            
+
         }
     }
     deinit {
@@ -31,11 +35,17 @@ extension MainScreenCoordinator:MainScreenViewModelCoordinatorDelegate{
         
     }
 }
+
 extension MainScreenCoordinator:ExpenseDetailCoordinatorDelegate{
+    func detailCoordinatorDidPassText(text: String) {
+        viewModel.stringToShow = text
+        self.navController?.popViewController(animated: true)
+        self.childCoordinators.removeAll()
+    }
+    
     func detailCoordinatorDidFinish(detailCoordinator: ExpenseDetailCoordinator) {
         self.navController?.popViewController(animated: true)
         self.childCoordinators.removeAll()
-        
     }
     
     

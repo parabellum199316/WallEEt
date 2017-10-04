@@ -11,6 +11,8 @@ import UIKit
 class ExpenseDetailsViewController: UIViewController {
     var viewModel: ExpenseDetailsViewModelType!
     @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var textField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         label.text = "Details"
@@ -18,9 +20,11 @@ class ExpenseDetailsViewController: UIViewController {
     }
 
     @IBAction func close(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        viewModel.passText(text: textField.text!)
     }
-    
+    deinit {
+        print("dettails deinit")
+    }
     override func viewWillDisappear(_ animated: Bool) {
         viewModel.close()
     }
@@ -29,9 +33,7 @@ class ExpenseDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
-        print("VC DEINIT")
-    }
+    
     /*
     // MARK: - Navigation
 

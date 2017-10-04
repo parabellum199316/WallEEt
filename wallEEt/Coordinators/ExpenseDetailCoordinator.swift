@@ -10,6 +10,8 @@ import UIKit
 protocol ExpenseDetailCoordinatorDelegate: class
 {
     func detailCoordinatorDidFinish(detailCoordinator: ExpenseDetailCoordinator)
+    func detailCoordinatorDidPassText(text:String)
+    
 }
 
 class ExpenseDetailCoordinator: Coordinator {
@@ -27,6 +29,11 @@ class ExpenseDetailCoordinator: Coordinator {
     }
 }
 extension ExpenseDetailCoordinator: ExpenseDetailsViewModelCoordinatorDelegate{
+    func expenseDetailsViewModelDidPassText(text: String) {
+        delegate?.detailCoordinatorDidPassText(text: text)
+        
+    }
+    
     func expenseDetailsViewModelDidEnd() {
         delegate?.detailCoordinatorDidFinish(detailCoordinator: self)
     }

@@ -22,7 +22,11 @@ final class MainScreenViewModel:MainScreenViewModelType{
    
      weak var coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?
    
-    var stringToShow:String
+    var stringToShow:String{
+        didSet{
+            print(stringToShow + "CHANGED")
+        }
+    }
     init(){
         stringToShow = "TEST FROM VM"
     }
