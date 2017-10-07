@@ -7,23 +7,24 @@
 //
 
 import UIKit
-
+import RxSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator:AppCoordinator!
-
+    private var appCoordinator: AppCoordinator!
+    private let disposeBag = DisposeBag()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         window = UIWindow()
         
-        let navController = UINavigationController()
-        window?.rootViewController = navController
-        coordinator = AppCoordinator(navController: navController)
-        coordinator.start()
-        window?.makeKeyAndVisible()
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator.start()
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         return true
     }
-
 }
 

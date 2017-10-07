@@ -7,22 +7,21 @@
 //
 
 import Foundation
-protocol ExpenseDetailsViewModelType{
-    var coordinatorDelegate:ExpenseDetailsViewModelCoordinatorDelegate?{get set}
-    func close()
-}
+import RxSwift
 
-protocol ExpenseDetailsViewModelCoordinatorDelegate:class {
-    func expenseDetailsViewModelDidEnd()
-}
-class ExpenseDetailsViewModel:ExpenseDetailsViewModelType{
-    weak var coordinatorDelegate: ExpenseDetailsViewModelCoordinatorDelegate?
+struct ExpenseDetailsViewModel{
+    //Input
+    let titleText:Observable<String>
+    let cancel:AnyObserver<Void>
+    //Output
+    let didCancel:Observable<Void>
     init(){
-        
+        let _behSubj = BehaviorSubject<String>(value: "test2")
+        self.titleText = _behSubj.asObservable().map{"\($0)"}
+        let _cancel = PublishSubject<Void>()
+        self.cancel = _cancel.asObserver()
+        self.didCancel = _cancel.asObservable().do(onNext: {print ("1111")})
     }
-    func close() {
-        coordinatorDelegate?.expenseDetailsViewModelDidEnd()
-    }
-    
-    
+   
+
 }

@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class MainScreenViewController: UIViewController {
-    var viewModel: MainScreenViewModelType!
+class MainScreenViewController: UIViewController,StoryboardInitializable {
+    var viewModel:MainScreenViewModel!
+    
+    private let disposeBag = DisposeBag()
+    
+    @IBOutlet weak var toDetailsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.title.bind(to: testLabel.rx.text).disposed(by: disposeBag)
+        toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
     }
     
-    @IBAction func toDetailsVC(_ sender: Any) {
-        viewModel.nextView()
-    }
+    
     
     
 

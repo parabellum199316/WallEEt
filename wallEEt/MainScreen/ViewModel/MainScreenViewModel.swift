@@ -7,36 +7,23 @@
 //
 
 import Foundation
-import Charts
 import RxSwift
-import RealmSwift
 
-protocol MainScreenViewModelType {
-    var coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?{get set}
-    func nextView()
-}
 
-protocol MainScreenViewModelCoordinatorDelegate: class
-{
-    func mainScreenViewModelDidTapNext()
-}
 
-final class MainScreenViewModel:MainScreenViewModelType{
-    weak var coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?
-    //MARK:Input
-    
-    
-    func nextView() {
-        coordinatorDelegate?.mainScreenViewModelDidTapNext()
+struct MainScreenViewModel{
+    let title:Observable<String>
+    let showDetails:AnyObserver<Void>
+    let showDetailsScreen:Observable<Void>
+    init(testText:String){
+        let _currentLanguage = BehaviorSubject<String>(value: testText)
+        self.title = _currentLanguage.asObservable().map{"\($0)"}
+        let _showDetails =  PublishSubject<Void>()
+        self.showDetails = _showDetails.asObserver()
+        self.showDetailsScreen = _showDetails.asObservable()
     }
     
-    //MARK:Output
-    var account:AccountModel
-    //MARK:Init
-    init(coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?,accountModel:AccountModel){
-        self.coordinatorDelegate = coordinatorDelegate
-        self.account = accountModel
-    }
+
     
 }
 

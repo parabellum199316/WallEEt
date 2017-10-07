@@ -14,7 +14,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainScreen" id="BYZ-38-t0r" customClass="MainScreenViewController" customModule="wallEEt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreenViewController" id="BYZ-38-t0r" customClass="MainScreenViewController" customModule="wallEEt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -26,9 +26,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEj-mv-Vtn">
                                 <rect key="frame" x="146" y="72" width="83" height="30"/>
                                 <state key="normal" title="TO DETAILS"/>
-                                <connections>
-                                    <action selector="toDetailsVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1aH-Ce-HzR"/>
-                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DlM-S1-iKc">
                                 <rect key="frame" x="0.0" y="426.5" width="375" height="240.5"/>
@@ -38,6 +35,12 @@
                                 <rect key="frame" x="0.0" y="160" width="375" height="267"/>
                                 <color key="backgroundColor" red="0.28187879919999997" green="0.66998165850000002" blue="0.84213286639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtD-nC-W8h">
+                                <rect key="frame" x="166" y="122" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -46,17 +49,22 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JEj-mv-Vtn" secondAttribute="trailing" constant="130" id="KwR-Hk-nbZ"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="130" id="MLW-dn-wAC"/>
                             <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="kUI-DN-g8F" secondAttribute="bottom" id="Nbf-ll-d3B"/>
+                            <constraint firstItem="QtD-nC-W8h" firstAttribute="top" secondItem="JEj-mv-Vtn" secondAttribute="bottom" constant="20" id="Q5N-W1-GaU"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="RG7-xO-Pnq"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="T4V-mg-I4d"/>
                             <constraint firstAttribute="trailing" secondItem="kUI-DN-g8F" secondAttribute="trailing" id="bvn-t8-4tk"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="QtD-nC-W8h" secondAttribute="trailing" constant="151" id="gik-Wc-5hI"/>
                             <constraint firstItem="DlM-S1-iKc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="go9-eM-toB"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jIj-eN-Cdb"/>
                             <constraint firstAttribute="trailing" secondItem="DlM-S1-iKc" secondAttribute="trailing" id="nyW-48-ctH"/>
+                            <constraint firstItem="QtD-nC-W8h" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="150" id="oy9-kq-bIu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wac-Wr-0mV"/>
                     <connections>
                         <outlet property="tableView" destination="DlM-S1-iKc" id="HD6-qC-1vG"/>
+                        <outlet property="testLabel" destination="QtD-nC-W8h" id="ulH-xf-l67"/>
+                        <outlet property="toDetailsButton" destination="JEj-mv-Vtn" id="Gha-ca-OFR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,6 +74,7 @@
         <!--Navigation Controller-->
         <scene sceneID="aK2-kt-4mr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOI-NU-tMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iBI-Y8-37s" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nDL-fU-hpj">
@@ -77,7 +86,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="VDA-id-eSl"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BOI-NU-tMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="107"/>
         </scene>

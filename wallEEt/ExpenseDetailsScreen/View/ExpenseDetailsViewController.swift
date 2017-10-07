@@ -7,30 +7,32 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class ExpenseDetailsViewController: UIViewController {
-    var viewModel: ExpenseDetailsViewModelType!
+class ExpenseDetailsViewController: UIViewController,StoryboardInitializable{
+    var viewModel: ExpenseDetailsViewModel!
+    private let disposeBag = DisposeBag()
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var closeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = "Details"
+        viewModel.titleText
+            .bind(to: label.rx.text)
+            .disposed(by: disposeBag)
+        closeButton.rx.tap
+            .bind(to: viewModel.cancel)
+            .disposed(by: disposeBag)
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func close(_ sender: Any) {
-       
-    }
+    
+    
     deinit {
         print("dettails deinit")
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        viewModel.close()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     
     /*
