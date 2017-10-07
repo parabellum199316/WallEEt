@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import Charts
+import RxSwift
+import RealmSwift
+
 protocol MainScreenViewModelType {
-    var stringToShow:String{get set}
     var coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?{get set}
     func nextView()
 }
@@ -19,18 +22,22 @@ protocol MainScreenViewModelCoordinatorDelegate: class
 }
 
 final class MainScreenViewModel:MainScreenViewModelType{
-   
-     weak var coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?
-   
-    var stringToShow:String{
-        didSet{
-            print(stringToShow + "CHANGED")
-        }
-    }
-    init(){
-        stringToShow = "TEST FROM VM"
-    }
+    weak var coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?
+    //MARK:Input
+    
+    
     func nextView() {
         coordinatorDelegate?.mainScreenViewModelDidTapNext()
     }
+    
+    //MARK:Output
+    var account:AccountModel
+    //MARK:Init
+    init(coordinatorDelegate:MainScreenViewModelCoordinatorDelegate?,accountModel:AccountModel){
+        self.coordinatorDelegate = coordinatorDelegate
+        self.account = accountModel
+    }
+    
 }
+
+

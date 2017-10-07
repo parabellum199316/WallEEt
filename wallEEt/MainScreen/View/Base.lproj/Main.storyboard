@@ -31,18 +31,18 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DlM-S1-iKc">
-                                <rect key="frame" x="0.0" y="443" width="375" height="224"/>
+                                <rect key="frame" x="0.0" y="426.5" width="375" height="240.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUI-DN-g8F">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUI-DN-g8F" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="160" width="375" height="267"/>
                                 <color key="backgroundColor" red="0.28187879919999997" green="0.66998165850000002" blue="0.84213286639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DlM-S1-iKc" secondAttribute="bottom" id="0xQ-Ut-DGT"/>
-                            <constraint firstItem="kUI-DN-g8F" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.45" id="I9p-C3-x7k"/>
+                            <constraint firstItem="kUI-DN-g8F" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="I9p-C3-x7k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JEj-mv-Vtn" secondAttribute="trailing" constant="130" id="KwR-Hk-nbZ"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="130" id="MLW-dn-wAC"/>
                             <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="kUI-DN-g8F" secondAttribute="bottom" id="Nbf-ll-d3B"/>

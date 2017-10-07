@@ -1,16 +1,29 @@
 PODS:
+  - Charts (3.0.3):
+    - Charts/Core (= 3.0.3)
+  - Charts/Core (3.0.3)
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
 
 DEPENDENCIES:
+  - Charts (= 3.0.3)
+  - RealmSwift
   - RxCocoa (~> 3.6.1)
   - RxSwift (~> 3.6.1)
 
 SPEC CHECKSUMS:
+  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
 
-PODFILE CHECKSUM: fb9135493de58772fe0ac59677c442e1c9187d20
+PODFILE CHECKSUM: 995c944dc3a71b09ead9e37138bdea5eb2beffb2
 
 COCOAPODS: 1.3.1

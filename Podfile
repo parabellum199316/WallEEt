@@ -9,6 +9,8 @@ target 'wallEEt' do
 	
 	pod 'RxSwift', '~> 3.6.1'
     	pod 'RxCocoa', '~> 3.6.1'
+pod 'Charts', '3.0.3'
+pod 'RealmSwift'
 	
 
 end

@@ -11,7 +11,6 @@ import UIKit
 class ExpenseDetailsViewController: UIViewController {
     var viewModel: ExpenseDetailsViewModelType!
     @IBOutlet weak var label: UILabel!
-    
     @IBOutlet weak var textField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +19,7 @@ class ExpenseDetailsViewController: UIViewController {
     }
 
     @IBAction func close(_ sender: Any) {
-        viewModel.passText(text: textField.text!)
+       
     }
     deinit {
         print("dettails deinit")
