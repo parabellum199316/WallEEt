@@ -7,13 +7,22 @@
 //
 
 import Foundation
-
+enum AccItemType{
+    case income
+    case expense
+}
 struct MainScreenTableViewCellViewModel {
-    var amount:Int
+    var amount:String
     var stringDate:String
+    var accItemType:AccItemType
     
     init(accItem:AccountItem){
-        self.amount = accItem.amount
+        if accItem is ExpensesModel{
+            accItemType = .expense
+        }else{
+            accItemType = .income
+        }
+        self.amount = String(accItem.amount)
         let date = accItem.date
         stringDate = date!.description(with: Locale.current)
     }

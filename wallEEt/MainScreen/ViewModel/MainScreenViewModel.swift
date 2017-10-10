@@ -9,10 +9,12 @@
 import Foundation
 import RxSwift
 import RealmSwift
+import RxRealm
 
 
 
 struct MainScreenViewModel{
+    let disposeBag = DisposeBag()
     //MARK: - Properties
     let realm = try! Realm()
     var accountModel:AccountModel?
@@ -48,15 +50,34 @@ struct MainScreenViewModel{
                 realm.add(accountModel!)
             }
         }
+       
+         Observable.from(object: accountModel!).map { acc -> [AccountItem] in
+            var accItems = [AccountItem]()
+            for expense in acc.expenses{
+                accItems.append(expense as AccountItem)
+            }
+            for income in acc.incomes{
+                accItems.append(income as AccountItem)
+            }
+            return accItems.sorted(by: { (lhs, rhs) -> Bool in
+                lhs.date > rhs.date
+            })
+        }.bind(to: _accItems).addDisposableTo(disposeBag)
     }
     
     func addExpensesItem(amount:Int,comment:String,date:Date?){
         let item = ExpensesModel(amount: amount, date: date ?? Date(), comment: comment)
-        accountModel?.expenses.append(item)
+        try! realm.write {
+            accountModel?.expenses.append(item)
+        }
+        
     }
     func addIncomesItem(amount:Int,source:IncomeSources,date:Date?){
         let item = IncomesModel(amount:amount,date: date ?? Date(), source:source)
-        accountModel?.incomes.append(item)
+        try! realm.write {
+            accountModel?.incomes.append(item)
+        }
+       
     }
 
 

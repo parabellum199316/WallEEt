@@ -75,12 +75,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-Ko-R6i">
+                                <rect key="frame" x="16" y="117" width="86" height="30"/>
+                                <state key="normal" title="AddExpense"/>
+                                <connections>
+                                    <action selector="addExpenseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5dW-CR-1nA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S1-gK-7Ib">
+                                <rect key="frame" x="281" y="122" width="78" height="30"/>
+                                <state key="normal" title="AddIncome"/>
+                                <connections>
+                                    <action selector="addIncomeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dqJ-rv-mB3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DlM-S1-iKc" secondAttribute="bottom" id="0xQ-Ut-DGT"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="I9p-C3-x7k"/>
+                            <constraint firstItem="Ptq-Ko-R6i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JOu-uQ-a74"/>
+                            <constraint firstItem="kUI-DN-g8F" firstAttribute="top" secondItem="Ptq-Ko-R6i" secondAttribute="bottom" constant="13" id="Jjl-VT-Lay"/>
+                            <constraint firstItem="0S1-gK-7Ib" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="KTd-u1-vbJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JEj-mv-Vtn" secondAttribute="trailing" constant="130" id="KwR-Hk-nbZ"/>
+                            <constraint firstItem="kUI-DN-g8F" firstAttribute="top" secondItem="0S1-gK-7Ib" secondAttribute="bottom" constant="8" id="Ldb-zD-Qhp"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="130" id="MLW-dn-wAC"/>
                             <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="kUI-DN-g8F" secondAttribute="bottom" id="Nbf-ll-d3B"/>
                             <constraint firstItem="QtD-nC-W8h" firstAttribute="top" secondItem="JEj-mv-Vtn" secondAttribute="bottom" constant="20" id="Q5N-W1-GaU"/>
@@ -96,6 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wac-Wr-0mV"/>
                     <connections>
+                        <outlet property="addExpense" destination="Ptq-Ko-R6i" id="xQD-nN-xZm"/>
                         <outlet property="pieChartView" destination="kUI-DN-g8F" id="e2v-7u-IKc"/>
                         <outlet property="tableView" destination="DlM-S1-iKc" id="nwF-om-vSi"/>
                         <outlet property="testLabel" destination="QtD-nC-W8h" id="ulH-xf-l67"/>

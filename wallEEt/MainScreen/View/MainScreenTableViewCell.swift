@@ -20,8 +20,13 @@ class MainScreenTableViewCell: UITableViewCell {
     
     
     func configure() {
-        amountLabel.text = String(viewModel.amount)
+        amountLabel.text = viewModel.amount
         dateLabel.text = viewModel.stringDate
+        if viewModel.accItemType == .expense{
+            self.amountLabel.textColor = UIColor.red
+        }else{
+            self.amountLabel.textColor = UIColor.green
+        }
         
     }
     
