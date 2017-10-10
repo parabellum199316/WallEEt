@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4C97F1B2A5F43672489E5E0FD32C98A5'
-               BlueprintName = 'Pods-wallEEt'
+               BlueprintIdentifier = '083E24323190E5197776659D84C90253'
+               BlueprintName = 'RxRealm'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-wallEEt.framework'>
+               BuildableName = 'RxRealm.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

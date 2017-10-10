@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C369BE71F8A620500F9542B /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C369BE61F8A620500F9542B /* MainScreenTableViewCell.swift */; };
+		5C369BE91F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C369BE81F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift */; };
+		5C369BEB1F8A76B100F9542B /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C369BEA1F8A76B100F9542B /* FirstLaunch.swift */; };
 		5C3EFA451F57019D00CE929F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EFA441F57019D00CE929F /* AppDelegate.swift */; };
 		5C3EFA471F57019D00CE929F /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EFA461F57019D00CE929F /* MainScreenViewController.swift */; };
 		5C3EFA4A1F57019D00CE929F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA481F57019D00CE929F /* Main.storyboard */; };
@@ -20,7 +23,7 @@
 		5C6C78D61F84E71300D67E2D /* ExpensesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C78D51F84E71300D67E2D /* ExpensesModel.swift */; };
 		5C6C78D81F84F09600D67E2D /* IncomesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C78D71F84F09600D67E2D /* IncomesModel.swift */; };
 		5C6C78DA1F84F30600D67E2D /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C78D91F84F30600D67E2D /* AccountModel.swift */; };
-		5C7E96271F85416F00951E10 /* AccountItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E96261F85416F00951E10 /* AccountItemProtocol.swift */; };
+		5C7E96271F85416F00951E10 /* AccountItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E96261F85416F00951E10 /* AccountItem.swift */; };
 		5CAA507B1F813FB100E80D5F /* ExpenseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA507A1F813FB100E80D5F /* ExpenseDetailsViewController.swift */; };
 		5CAA507D1F813FCB00E80D5F /* ExpenseDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CAA507C1F813FCB00E80D5F /* ExpenseDetails.storyboard */; };
 		5CAA50811F81434700E80D5F /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA50801F81434700E80D5F /* MainScreenViewModel.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C369BE61F8A620500F9542B /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
+		5C369BE81F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		5C369BEA1F8A76B100F9542B /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
 		5C3EFA411F57019D00CE929F /* wallEEt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wallEEt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3EFA441F57019D00CE929F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C3EFA461F57019D00CE929F /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +50,7 @@
 		5C6C78D51F84E71300D67E2D /* ExpensesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesModel.swift; sourceTree = "<group>"; };
 		5C6C78D71F84F09600D67E2D /* IncomesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesModel.swift; sourceTree = "<group>"; };
 		5C6C78D91F84F30600D67E2D /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
-		5C7E96261F85416F00951E10 /* AccountItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItemProtocol.swift; sourceTree = "<group>"; };
+		5C7E96261F85416F00951E10 /* AccountItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountItem.swift; sourceTree = "<group>"; };
 		5CAA507A1F813FB100E80D5F /* ExpenseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsViewController.swift; sourceTree = "<group>"; };
 		5CAA507C1F813FCB00E80D5F /* ExpenseDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpenseDetails.storyboard; sourceTree = "<group>"; };
 		5CAA50801F81434700E80D5F /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 		5C45F5551F88E301001FAA1D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5C369BEA1F8A76B100F9542B /* FirstLaunch.swift */,
 				5C3EFA441F57019D00CE929F /* AppDelegate.swift */,
 				5C45F5561F88E316001FAA1D /* AppCoordinator.swift */,
 			);
@@ -148,7 +155,7 @@
 		5C7E96281F85421200951E10 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				5C7E96261F85416F00951E10 /* AccountItemProtocol.swift */,
+				5C7E96261F85416F00951E10 /* AccountItem.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				5CAA50801F81434700E80D5F /* MainScreenViewModel.swift */,
+				5C369BE81F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				5C3EFA461F57019D00CE929F /* MainScreenViewController.swift */,
+				5C369BE61F8A620500F9542B /* MainScreenTableViewCell.swift */,
 				5C3EFA481F57019D00CE929F /* Main.storyboard */,
 			);
 			path = View;
@@ -341,6 +350,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -349,6 +359,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,13 +376,16 @@
 			files = (
 				5C6C78D61F84E71300D67E2D /* ExpensesModel.swift in Sources */,
 				5CAA50861F815DDB00E80D5F /* ExpenseDetailsViewModel.swift in Sources */,
+				5C369BE71F8A620500F9542B /* MainScreenTableViewCell.swift in Sources */,
 				5C45F55B1F88E3C0001FAA1D /* StoryboardInitializable.swift in Sources */,
 				5C45F5571F88E316001FAA1D /* AppCoordinator.swift in Sources */,
+				5C369BE91F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift in Sources */,
 				5CAA50811F81434700E80D5F /* MainScreenViewModel.swift in Sources */,
 				5CAA507B1F813FB100E80D5F /* ExpenseDetailsViewController.swift in Sources */,
 				5C6512AC1F88F48C00D8D438 /* ExpenseDetailsCoordinator.swift in Sources */,
 				5C3EFA471F57019D00CE929F /* MainScreenViewController.swift in Sources */,
-				5C7E96271F85416F00951E10 /* AccountItemProtocol.swift in Sources */,
+				5C7E96271F85416F00951E10 /* AccountItem.swift in Sources */,
+				5C369BEB1F8A76B100F9542B /* FirstLaunch.swift in Sources */,
 				5C6C78DA1F84F30600D67E2D /* AccountModel.swift in Sources */,
 				5C3EFA451F57019D00CE929F /* AppDelegate.swift in Sources */,
 				5C45F5591F88E387001FAA1D /* BaseCoordinator.swift in Sources */,

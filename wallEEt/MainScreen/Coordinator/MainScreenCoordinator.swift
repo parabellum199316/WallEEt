@@ -16,14 +16,10 @@ class MainScreenCoordinator:BaseCoordinator<Void>{
         self.window = window
     }
     override func start() -> Observable<Void> {
-        let vm = MainScreenViewModel(testText: "TestTestTest")
+        let vm = MainScreenViewModel()
         let viewController = MainScreenViewController.initFromStoryboard(name: "Main")
         let navController = UINavigationController(rootViewController: viewController)
         viewController.viewModel = vm
-//        vm.showDetailsScreen.flatMap{[weak self] _ -> Observable<Void> in
-//            guard let `self` = self else { return .empty() }
-//            return self.showDetailScreen(on: viewController)
-//            }.bind(to: vm.showDetails).disposed(by: disposeBag)
         vm.showDetailsScreen.flatMap { [weak self] _ -> Observable<Void> in
             guard let `self` = self else { return  .empty() }
             return self.showDetailScreen(on: navController)

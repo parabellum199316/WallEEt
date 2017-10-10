@@ -7,21 +7,28 @@
 //
 
 import UIKit
+import Charts
 import RxSwift
 import RxCocoa
 
 class MainScreenViewController: UIViewController,StoryboardInitializable {
     var viewModel:MainScreenViewModel!
-    
     private let disposeBag = DisposeBag()
-    
-    @IBOutlet weak var toDetailsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var toDetailsButton: UIButton!
+    
     @IBOutlet weak var testLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.title.bind(to: testLabel.rx.text).disposed(by: disposeBag)
         toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
+//        viewModel.accItems.bind(to: tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
+//            row, item, cell in
+//            let cellVM = MainScreenTableViewCellViewModel(accItem: item)
+//            cell.viewModel = cellVM
+//            cell.configure()
+//        }.addDisposableTo(disposeBag)
+        
     }
     
     

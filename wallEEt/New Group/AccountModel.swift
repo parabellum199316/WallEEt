@@ -11,4 +11,5 @@ import RealmSwift
 class AccountModel:Object{
     let expenses = List<ExpensesModel>()
     let incomes = List<IncomesModel>()
+    dynamic var value = 10
 }

@@ -20,7 +20,6 @@ class ExpenseDetailsCoordinator: BaseCoordinator<Void>{
         viewController.viewModel = viewModel
         let cancel = viewModel.didCancel
         rootViewController.pushViewController(viewController, animated: true)
-        
         return  cancel.do(onNext: { [weak self] _ in self?.rootViewController.popViewController(animated: true)}).take(1)
         
     }
