@@ -8,7 +8,7 @@
 
 import Foundation
 protocol AccountItem {
-    var amount: Int{get set}
+    var amount: Double{get set}
     var date:Date!{get set}
     
 }

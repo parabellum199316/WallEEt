@@ -28,6 +28,8 @@
 		5CAA507D1F813FCB00E80D5F /* ExpenseDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CAA507C1F813FCB00E80D5F /* ExpenseDetails.storyboard */; };
 		5CAA50811F81434700E80D5F /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA50801F81434700E80D5F /* MainScreenViewModel.swift */; };
 		5CAA50861F815DDB00E80D5F /* ExpenseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA50851F815DDB00E80D5F /* ExpenseDetailsViewModel.swift */; };
+		5CC041B11F8E1D1E0041ADE2 /* AddExpenseItemAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC041B01F8E1D1E0041ADE2 /* AddExpenseItemAlertView.swift */; };
+		5CC041B31F8E24AE0041ADE2 /* AddIncomesItemAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC041B21F8E24AE0041ADE2 /* AddIncomesItemAlertView.swift */; };
 		8F801D75937A0F2341481D31 /* Pods_wallEEt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA34B22246467AFE5E5DCE4 /* Pods_wallEEt.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		5CAA507C1F813FCB00E80D5F /* ExpenseDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpenseDetails.storyboard; sourceTree = "<group>"; };
 		5CAA50801F81434700E80D5F /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		5CAA50851F815DDB00E80D5F /* ExpenseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailsViewModel.swift; sourceTree = "<group>"; };
+		5CC041B01F8E1D1E0041ADE2 /* AddExpenseItemAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseItemAlertView.swift; sourceTree = "<group>"; };
+		5CC041B21F8E24AE0041ADE2 /* AddIncomesItemAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomesItemAlertView.swift; sourceTree = "<group>"; };
 		5FECE86DEDB81B18D3782533 /* Pods-wallEEt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallEEt.release.xcconfig"; path = "Pods/Target Support Files/Pods-wallEEt/Pods-wallEEt.release.xcconfig"; sourceTree = "<group>"; };
 		6DA34B22246467AFE5E5DCE4 /* Pods_wallEEt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wallEEt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CDF8100A4D0150A0559E42 /* Pods-wallEEt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wallEEt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wallEEt/Pods-wallEEt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				5C3EFA461F57019D00CE929F /* MainScreenViewController.swift */,
 				5C369BE61F8A620500F9542B /* MainScreenTableViewCell.swift */,
 				5C3EFA481F57019D00CE929F /* Main.storyboard */,
+				5CC041B01F8E1D1E0041ADE2 /* AddExpenseItemAlertView.swift */,
+				5CC041B21F8E24AE0041ADE2 /* AddIncomesItemAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -386,6 +392,8 @@
 				5C3EFA471F57019D00CE929F /* MainScreenViewController.swift in Sources */,
 				5C7E96271F85416F00951E10 /* AccountItem.swift in Sources */,
 				5C369BEB1F8A76B100F9542B /* FirstLaunch.swift in Sources */,
+				5CC041B11F8E1D1E0041ADE2 /* AddExpenseItemAlertView.swift in Sources */,
+				5CC041B31F8E24AE0041ADE2 /* AddIncomesItemAlertView.swift in Sources */,
 				5C6C78DA1F84F30600D67E2D /* AccountModel.swift in Sources */,
 				5C3EFA451F57019D00CE929F /* AppDelegate.swift in Sources */,
 				5C45F5591F88E387001FAA1D /* BaseCoordinator.swift in Sources */,
