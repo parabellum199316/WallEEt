@@ -16,32 +16,31 @@ enum AlertType{
 }
 class MainScreenViewController: UIViewController,StoryboardInitializable {
     var viewModel:MainScreenViewModel!
+    private var expanded:Bool = false
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak var currentBalance: UILabel!
     
     @IBOutlet weak var addExpense: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var toDetailsButton: UIButton!
-    
     @IBOutlet weak var testLabel: UILabel!
+    
+    @IBOutlet weak var tableTopToButtonConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var tableToLayoutGuideConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonToPieChartViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonToTopLayoutGuideConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
-        
-        viewModel.accItems.bind(to: tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
-            row, item, cell in
-            let cellVM = MainScreenTableViewCellViewModel(accItem: item)
-            cell.viewModel = cellVM
-            cell.configure()
-            }.addDisposableTo(disposeBag)
-        
-        viewModel.pieData
-            .subscribe(onNext: { (data) in
-                self.pieChartView.data = data
-                self.pieChartView.setNeedsDisplay()
-            }).addDisposableTo(disposeBag)
-        viewModel.updateChart()
+        tableTopToButtonConstraint.isActive = true
+        tableToLayoutGuideConstraint.isActive = false
+        buttonToTopLayoutGuideConstraint.isActive = false
+        buttonToPieChartViewConstraint.isActive = true
+        bind()
     }
     
     
@@ -50,8 +49,48 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
         
     }
     
+    
+    
+    @IBAction func expandTable(_ sender: Any) {
+        animate(isExpanded: expanded)
+        
+        
+    }
     @IBAction func addIncomeButtonTapped(_ sender: Any) {
         showAlert(type: .income)
+    }
+    private func bind(){
+        toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
+        viewModel.accItems.bind(to: tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
+            row, item, cell in
+            let cellVM = MainScreenTableViewCellViewModel(accItem: item)
+            cell.viewModel = cellVM
+            cell.configure()
+            }.addDisposableTo(disposeBag)
+        viewModel.pieData
+            .subscribe(onNext: { (data) in
+                self.pieChartView.data = data
+                self.pieChartView.setNeedsDisplay()
+            }).addDisposableTo(disposeBag)
+        
+        viewModel.balance.asObservable().subscribe(onNext:{string in
+            self.currentBalance.text = string
+        }).addDisposableTo(disposeBag)
+        viewModel.updateChart()
+    }
+    
+    fileprivate func animate(isExpanded:Bool) {
+        tableToLayoutGuideConstraint.isActive = !isExpanded
+        tableTopToButtonConstraint.isActive = isExpanded
+        buttonToTopLayoutGuideConstraint.isActive = !isExpanded
+        buttonToPieChartViewConstraint.isActive = isExpanded
+        self.expanded = !isExpanded
+        
+        UIView.animate(withDuration: 0.4) {
+            self.view.needsUpdateConstraints()
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }
     }
     private func showAlert(type:AlertType){
         func setupAlert(customAlert:UIViewController){
@@ -82,7 +121,8 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
 }
 extension MainScreenViewController:AddExpenseItemAlertDelegate{
     func addButtonTapped(amount: Double) {
-        viewModel.addExpensesItem(amount: amount, comment: "some", date: Date())
+        //TODO:Category
+        viewModel.addExpensesItem(amount: amount, category: .other, comment: "some", date: Date())
         viewModel.updateChart()
     }
     

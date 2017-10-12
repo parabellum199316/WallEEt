@@ -23,12 +23,14 @@ struct MainScreenViewModel{
     //MARK: - Inputs
     let showDetails:AnyObserver<Void>
     let addAccountItem:AnyObserver<PieChartData?>
+   
     
     //MARK: - Outputs
     //Call to show details
     let showDetailsScreen:Observable<Void>
     let accItems: Observable<[AccountItem]>
     let pieData:Observable<PieChartData?>
+    let balance = Variable<String>("0")
     
     //let pieChartVariable = Variable<PieChartData?>(nil)
     
@@ -44,6 +46,7 @@ struct MainScreenViewModel{
         
         let _accItems = Variable<[AccountItem]> ([])
         self.accItems = _accItems.asObservable()
+       
         
        //Get account object
         let account = realm.objects(AccountModel.self).first
@@ -51,7 +54,7 @@ struct MainScreenViewModel{
             self.accountModel = accountM
         }else{
             //TODO: - show "Add new account" dialogue
-            self.accountModel = AccountModel(name:"TEST")
+            self.accountModel = AccountModel(name:"TEST",balance: 1000)
             
             try! realm.write {
                 realm.add(accountModel!)
@@ -59,6 +62,7 @@ struct MainScreenViewModel{
         }
        //Observe account object
         let accountObservable =  Observable.from(object: accountModel!)
+        //Observe [AccountItem]
         accountObservable.map { acc -> [AccountItem] in
             var accItems = [AccountItem]()
             for expense in acc.expenses{
@@ -67,16 +71,22 @@ struct MainScreenViewModel{
             for income in acc.incomes{
                 accItems.append(income as AccountItem)
             }
-            return accItems.sorted(by: { (lhs, rhs) -> Bool in
+            return accItems.prefix(100).sorted(by: { (lhs, rhs) -> Bool in
                 lhs.date > rhs.date
             })
             }.bind(to: _accItems).addDisposableTo(disposeBag)
+        //Observe account balance
+        accountObservable.map{ acc -> String in
+            return String(acc.balance)
+        }.bind(to:balance).addDisposableTo(disposeBag)
+        
     }
     
-    func addExpensesItem(amount:Double,comment:String,date:Date?){
-        let item = ExpensesModel(amount: amount, date: date ?? Date(), comment: comment)
+    func addExpensesItem(amount:Double,category:ExpenseCategory,comment:String,date:Date?){
+        let item = ExpensesModel(amount: amount,date: date ?? Date(), category: category, comment: comment)
         try! realm.write {
             accountModel?.expenses.append(item)
+            accountModel?.balance -= amount
         }
         
         
@@ -85,6 +95,7 @@ struct MainScreenViewModel{
         let item = IncomesModel(amount:amount,date: date ?? Date(), source:source)
         try! realm.write {
             accountModel?.incomes.append(item)
+            accountModel?.balance += amount
         }
        
     }
@@ -102,6 +113,7 @@ struct MainScreenViewModel{
         let pieChartData = PieChartDataSet(values: [expensesEntry,incomeEntry], label: nil)
         let data = PieChartData(dataSet: pieChartData)
         pieChartData.colors = [UIColor.red,UIColor.green]
+        balance.value = String(accountModel!.balance)
         addAccountItem.onNext(data)
 
     }

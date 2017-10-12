@@ -27,8 +27,49 @@
                                 <rect key="frame" x="146" y="72" width="83" height="30"/>
                                 <state key="normal" title="TO DETAILS"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUI-DN-g8F" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="160" width="375" height="267"/>
+                                <color key="backgroundColor" red="0.28187879919999997" green="0.66998165850000002" blue="0.84213286639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtD-nC-W8h">
+                                <rect key="frame" x="166" y="122" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZL-js-EZE">
+                                <rect key="frame" x="157" y="283" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-Ko-R6i">
+                                <rect key="frame" x="16" y="117" width="86" height="30"/>
+                                <state key="normal" title="AddExpense"/>
+                                <connections>
+                                    <action selector="addExpenseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5dW-CR-1nA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S1-gK-7Ib">
+                                <rect key="frame" x="281" y="122" width="78" height="30"/>
+                                <state key="normal" title="AddIncome"/>
+                                <connections>
+                                    <action selector="addIncomeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dqJ-rv-mB3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-FF-FVZ">
+                                <rect key="frame" x="0.0" y="427" width="375" height="25"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="4RP-r8-tDD"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="ic_strelka_less"/>
+                                <connections>
+                                    <action selector="expandTable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vhu-ac-5x0"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DlM-S1-iKc">
-                                <rect key="frame" x="0.0" y="426.5" width="375" height="240.5"/>
+                                <rect key="frame" x="0.0" y="452" width="375" height="215"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccItemCell" rowHeight="45" id="ubZ-CW-Kxz" customClass="MainScreenTableViewCell" customModule="wallEEt" customModuleProvider="target">
@@ -65,57 +106,51 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUI-DN-g8F" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="160" width="375" height="267"/>
-                                <color key="backgroundColor" red="0.28187879919999997" green="0.66998165850000002" blue="0.84213286639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtD-nC-W8h">
-                                <rect key="frame" x="166" y="122" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-Ko-R6i">
-                                <rect key="frame" x="16" y="117" width="86" height="30"/>
-                                <state key="normal" title="AddExpense"/>
-                                <connections>
-                                    <action selector="addExpenseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5dW-CR-1nA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S1-gK-7Ib">
-                                <rect key="frame" x="281" y="122" width="78" height="30"/>
-                                <state key="normal" title="AddIncome"/>
-                                <connections>
-                                    <action selector="addIncomeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dqJ-rv-mB3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DlM-S1-iKc" secondAttribute="bottom" id="0xQ-Ut-DGT"/>
+                            <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="4Yb-FF-FVZ" secondAttribute="bottom" id="0rr-Ea-TDc"/>
+                            <constraint firstAttribute="trailing" secondItem="4Yb-FF-FVZ" secondAttribute="trailing" id="45L-4h-WXO"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="I9p-C3-x7k"/>
                             <constraint firstItem="Ptq-Ko-R6i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JOu-uQ-a74"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DlM-S1-iKc" secondAttribute="bottom" id="JY1-OP-V3f"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="top" secondItem="Ptq-Ko-R6i" secondAttribute="bottom" constant="13" id="Jjl-VT-Lay"/>
                             <constraint firstItem="0S1-gK-7Ib" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="KTd-u1-vbJ"/>
+                            <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KiG-kJ-1lH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JEj-mv-Vtn" secondAttribute="trailing" constant="130" id="KwR-Hk-nbZ"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="top" secondItem="0S1-gK-7Ib" secondAttribute="bottom" constant="8" id="Ldb-zD-Qhp"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="130" id="MLW-dn-wAC"/>
-                            <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="kUI-DN-g8F" secondAttribute="bottom" id="Nbf-ll-d3B"/>
                             <constraint firstItem="QtD-nC-W8h" firstAttribute="top" secondItem="JEj-mv-Vtn" secondAttribute="bottom" constant="20" id="Q5N-W1-GaU"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="RG7-xO-Pnq"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="T4V-mg-I4d"/>
+                            <constraint firstItem="DlM-S1-iKc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZUX-lH-atI"/>
                             <constraint firstAttribute="trailing" secondItem="kUI-DN-g8F" secondAttribute="trailing" id="bvn-t8-4tk"/>
+                            <constraint firstItem="LZL-js-EZE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cA3-Qk-Lud"/>
+                            <constraint firstItem="LZL-js-EZE" firstAttribute="centerY" secondItem="kUI-DN-g8F" secondAttribute="centerY" id="ciR-4Z-tEs"/>
                             <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="QtD-nC-W8h" secondAttribute="trailing" constant="151" id="gik-Wc-5hI"/>
-                            <constraint firstItem="DlM-S1-iKc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="go9-eM-toB"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jIj-eN-Cdb"/>
-                            <constraint firstAttribute="trailing" secondItem="DlM-S1-iKc" secondAttribute="trailing" id="nyW-48-ctH"/>
+                            <constraint firstAttribute="trailing" secondItem="DlM-S1-iKc" secondAttribute="trailing" id="lNB-Za-QAH"/>
+                            <constraint firstItem="4Yb-FF-FVZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lfY-tw-vHm"/>
                             <constraint firstItem="QtD-nC-W8h" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="150" id="oy9-kq-bIu"/>
+                            <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="999" constant="25" id="qlb-cK-JoQ"/>
+                            <constraint firstItem="4Yb-FF-FVZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="999" id="y3I-gG-4NO"/>
+                            <constraint firstItem="4Yb-FF-FVZ" firstAttribute="top" secondItem="kUI-DN-g8F" secondAttribute="bottom" id="yTV-S7-keu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KiG-kJ-1lH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="wac-Wr-0mV"/>
                     <connections>
                         <outlet property="addExpense" destination="Ptq-Ko-R6i" id="xQD-nN-xZm"/>
+                        <outlet property="buttonToPieChartViewConstraint" destination="yTV-S7-keu" id="xQj-28-NWE"/>
+                        <outlet property="buttonToTopLayoutGuideConstraint" destination="y3I-gG-4NO" id="xJB-XZ-2Yo"/>
+                        <outlet property="currentBalance" destination="LZL-js-EZE" id="YBx-9R-E3P"/>
                         <outlet property="pieChartView" destination="kUI-DN-g8F" id="e2v-7u-IKc"/>
+                        <outlet property="tableToLayoutGuideConstraint" destination="qlb-cK-JoQ" id="ia6-uB-TEh"/>
+                        <outlet property="tableTopToButtonConstraint" destination="0rr-Ea-TDc" id="tVg-M9-Wu0"/>
                         <outlet property="tableView" destination="DlM-S1-iKc" id="nwF-om-vSi"/>
                         <outlet property="testLabel" destination="QtD-nC-W8h" id="ulH-xf-l67"/>
                         <outlet property="toDetailsButton" destination="JEj-mv-Vtn" id="Gha-ca-OFR"/>
@@ -145,7 +180,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXC-y9-CGn">
                                         <rect key="frame" x="20" y="220" width="48" height="30"/>
@@ -261,7 +296,7 @@
                                         <rect key="frame" x="20" y="110" width="300" height="31"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wg-8F-DPI">
                                         <rect key="frame" x="20" y="220" width="48" height="30"/>
@@ -310,4 +345,7 @@
             <point key="canvasLocation" x="210" y="-607"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_strelka_less" width="684" height="75"/>
+    </resources>
 </document>

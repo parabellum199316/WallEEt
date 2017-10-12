@@ -12,8 +12,10 @@ class AccountModel:Object{
     let expenses = List<ExpensesModel>()
     let incomes = List<IncomesModel>()
     dynamic var name = ""
-    convenience init(name:String){
+    dynamic var balance:Double = 0
+    convenience init(name:String,balance:Double){
         self.init()
+        self.balance = balance
         self.name = name
     }
 }
