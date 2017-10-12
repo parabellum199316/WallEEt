@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import HGCircularSlider
 protocol AddExpenseItemAlertDelegate{
     func addButtonTapped(amount:Double)
     func cancelButtonTapped()
@@ -20,6 +20,9 @@ class AddExpenseItemAlertView:UIViewController{
     @IBOutlet weak var textField: UITextField!
     
     
+    @IBAction func drag(_ sender: CircularSlider) {
+        self.textField.text = "\(Int(sender.endPointValue))"
+    }
     @IBAction func add(_ sender: Any) {
         textField.resignFirstResponder()
         delegate?.addButtonTapped(amount: Double(textField.text!)!)
@@ -36,7 +39,7 @@ class AddExpenseItemAlertView:UIViewController{
     var delegate:AddExpenseItemAlertDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.becomeFirstResponder()
+        //textField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {

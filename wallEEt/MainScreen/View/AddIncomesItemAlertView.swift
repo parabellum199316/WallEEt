@@ -34,7 +34,7 @@ class AddIncomesItemAlertView:UIViewController{
     var delegate:AddIncomesItemAlertDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.becomeFirstResponder()
+        //textField.becomeFirstResponder()
         
     }
     

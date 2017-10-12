@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FEF48690BA0EADA76D1C5011B8048745'
-               BlueprintName = 'Realm'
+               BlueprintIdentifier = '01E9FE51F89215D0FFFCF2A90DD7B4B8'
+               BlueprintName = 'HGCircularSlider'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Realm.framework'>
+               BuildableName = 'HGCircularSlider.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

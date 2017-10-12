@@ -12,6 +12,7 @@ pod 'RxCocoa', '~> 3.6.1'
 pod 'Charts', '3.0.3'
 pod 'RealmSwift'
 pod 'RxRealm'
+pod 'HGCircularSlider', '~> 2.0.0'
 	
 
 end
