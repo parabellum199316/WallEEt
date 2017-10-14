@@ -13,7 +13,7 @@ pod 'Charts', '3.0.3'
 pod 'RealmSwift'
 pod 'RxRealm'
 pod 'HGCircularSlider', '~> 2.0.0'
-pod 'SwiftyJSON', '3.1.4'
+pod 'SwiftyJSON', '~> 4.0.0-alpha.1'
 	
 
 end

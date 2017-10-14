@@ -16,6 +16,7 @@ extension WebService{
         static let ApiPath = "/v1/public/yql"
     }
     struct JSONResponseKeys{
+        static let Root = "query"
         static let Results = "results"
         static let Rates = "rate"
         static let RateName = "Name"

@@ -79,7 +79,11 @@ struct MainScreenViewModel{
         accountObservable.map{ acc -> String in
             return String(acc.balance)
         }.bind(to:balance).addDisposableTo(disposeBag)
-        
+        WebService.shared().getCurrencyExRates { (rates, error) in
+            for rate in rates!{
+                print(rate.name)
+            }
+        }
     }
     
     func addExpensesItem(amount:Double,category:ExpenseCategory,comment:String,date:Date?){

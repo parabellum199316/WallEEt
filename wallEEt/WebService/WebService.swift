@@ -5,7 +5,7 @@
 //  Created by ParaBellum on 10/14/17.
 //  Copyright © 2017 ParaBellum. All rights reserved.
 //
-
+import SwiftyJSON
 import Foundation
 class WebService:NSObject{
     
@@ -19,14 +19,14 @@ class WebService:NSObject{
     var session = URLSession.shared
     
     
-    func taskForGETMethod(parameters: [String:String], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(parameters: [String:String], completionHandlerForGET: @escaping (_ result: JSON?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
         
         
         /* 2/3. Build the URL, Configure the request */
         let request = URLRequest(url: URLFromParameters(parameters))
-        
+        print(request)
         /* 4. Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -53,7 +53,7 @@ class WebService:NSObject{
                 sendError("No data was returned by the request!")
                 return
             }
-            
+        
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
         }
@@ -63,11 +63,12 @@ class WebService:NSObject{
     }
     
     //MARK: Helpers
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: JSON?, _ error: NSError?) -> Void) {
         
-        var parsedResult: AnyObject! = nil
+        var parsedResult: JSON! = nil
         do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+            parsedResult = try JSON(data: data)
+            print(parsedResult)
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
@@ -82,12 +83,15 @@ class WebService:NSObject{
         components.host = WebService.Constants.ApiHost
         components.path = WebService.Constants.ApiPath
         components.queryItems = [URLQueryItem]()
-        
+    
         for (key, value) in parameters {
             let queryItem = URLQueryItem(name: key, value: value)
             components.queryItems!.append(queryItem)
         }
-        
-        return components.url!
+        let stringURL = components.url!.absoluteString
+        let correctURLstring1 = stringURL.replacingOccurrences(of: ",", with: "%2C")
+        let correctURLstring2 = correctURLstring1 + "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
+        let correctURL = URL(string: correctURLstring2)!
+        return correctURL
     }
 }

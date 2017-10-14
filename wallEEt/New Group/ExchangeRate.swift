@@ -7,10 +7,21 @@
 //
 
 import Foundation
+import SwiftyJSON
 struct  ExchangeRate {
     let name:String
     let rate:Double
     let time:String
-    init(json:[String:Any]) {
-        
+    init(json:JSON) {
+        self.name = json[WebService.JSONResponseKeys.RateName].stringValue
+        self.rate = json[WebService.JSONResponseKeys.RateValue].doubleValue
+        self.time = json[WebService.JSONResponseKeys.Time].stringValue
+    }
+    static func ratesFromJSON(json:[JSON]) -> [ExchangeRate]{
+        var rates:[ExchangeRate] = []
+        for rate in json{
+            rates.append(ExchangeRate(json: rate))
+        }
+        return rates
+    }
 }

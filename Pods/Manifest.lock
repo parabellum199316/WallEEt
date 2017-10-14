@@ -14,6 +14,7 @@ PODS:
     - RealmSwift (~> 2.5)
     - RxSwift (~> 3.2)
   - RxSwift (3.6.1)
+  - SwiftyJSON (4.0.0-alpha.1)
 
 DEPENDENCIES:
   - Charts (= 3.0.3)
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - RxCocoa (~> 3.6.1)
   - RxRealm
   - RxSwift (~> 3.6.1)
+  - SwiftyJSON (~> 4.0.0-alpha.1)
 
 SPEC CHECKSUMS:
   Charts: bcde37724c161958c1438dd4883971fcb2d50c06
@@ -31,7 +33,8 @@ SPEC CHECKSUMS:
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
+  SwiftyJSON: dc88934f85fb50b263b1632b9cbad3402505783e
 
-PODFILE CHECKSUM: 9fb2113d13de8b83f6084d1ce0a9fba64a78f6be
+PODFILE CHECKSUM: 6673ed4e17f29ce9ba895e8417805ef59e9e5c66
 
 COCOAPODS: 1.3.1
