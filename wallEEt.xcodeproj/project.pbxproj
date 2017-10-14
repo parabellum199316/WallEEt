@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1DAEB51F921F00009A69CC /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1DAEB41F921F00009A69CC /* WebService.swift */; };
+		5C1DAEB71F9226A9009A69CC /* YahooFinanceExchangeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1DAEB61F9226A9009A69CC /* YahooFinanceExchangeConstants.swift */; };
+		5C1DAEB91F9237BD009A69CC /* YahooFinanceConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1DAEB81F9237BD009A69CC /* YahooFinanceConvenience.swift */; };
+		5C1DAEBB1F923BB8009A69CC /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1DAEBA1F923BB8009A69CC /* ExchangeRate.swift */; };
 		5C369BE71F8A620500F9542B /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C369BE61F8A620500F9542B /* MainScreenTableViewCell.swift */; };
 		5C369BE91F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C369BE81F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift */; };
 		5C369BEB1F8A76B100F9542B /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C369BEA1F8A76B100F9542B /* FirstLaunch.swift */; };
@@ -34,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C1DAEB41F921F00009A69CC /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		5C1DAEB61F9226A9009A69CC /* YahooFinanceExchangeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooFinanceExchangeConstants.swift; sourceTree = "<group>"; };
+		5C1DAEB81F9237BD009A69CC /* YahooFinanceConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooFinanceConvenience.swift; sourceTree = "<group>"; };
+		5C1DAEBA1F923BB8009A69CC /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
 		5C369BE61F8A620500F9542B /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		5C369BE81F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		5C369BEA1F8A76B100F9542B /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
@@ -85,6 +93,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5C1DAEB31F921D17009A69CC /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				5C1DAEB41F921F00009A69CC /* WebService.swift */,
+				5C1DAEB61F9226A9009A69CC /* YahooFinanceExchangeConstants.swift */,
+				5C1DAEB81F9237BD009A69CC /* YahooFinanceConvenience.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
 		5C3EFA381F57019D00CE929F = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +124,7 @@
 		5C3EFA431F57019D00CE929F /* wallEEt */ = {
 			isa = PBXGroup;
 			children = (
+				5C1DAEB31F921D17009A69CC /* WebService */,
 				5C45F5551F88E301001FAA1D /* App */,
 				5C6C78D41F84DF7700D67E2D /* MODELS */,
 				5CAA50711F813BFC00E80D5F /* Library */,
@@ -151,6 +170,7 @@
 				5C6C78D51F84E71300D67E2D /* ExpensesModel.swift */,
 				5C6C78D71F84F09600D67E2D /* IncomesModel.swift */,
 				5C6C78D91F84F30600D67E2D /* AccountModel.swift */,
+				5C1DAEBA1F923BB8009A69CC /* ExchangeRate.swift */,
 			);
 			name = MODELS;
 			path = "New Group";
@@ -390,16 +410,20 @@
 				5C369BE91F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift in Sources */,
 				5CAA50811F81434700E80D5F /* MainScreenViewModel.swift in Sources */,
 				5CAA507B1F813FB100E80D5F /* ExpenseDetailsViewController.swift in Sources */,
+				5C1DAEBB1F923BB8009A69CC /* ExchangeRate.swift in Sources */,
+				5C1DAEB71F9226A9009A69CC /* YahooFinanceExchangeConstants.swift in Sources */,
 				5C6512AC1F88F48C00D8D438 /* ExpenseDetailsCoordinator.swift in Sources */,
 				5C3EFA471F57019D00CE929F /* MainScreenViewController.swift in Sources */,
 				5C7E96271F85416F00951E10 /* AccountItem.swift in Sources */,
 				5C369BEB1F8A76B100F9542B /* FirstLaunch.swift in Sources */,
+				5C1DAEB91F9237BD009A69CC /* YahooFinanceConvenience.swift in Sources */,
 				5CC041B11F8E1D1E0041ADE2 /* AddExpenseItemAlertView.swift in Sources */,
 				5CC041B31F8E24AE0041ADE2 /* AddIncomesItemAlertView.swift in Sources */,
 				5C6C78DA1F84F30600D67E2D /* AccountModel.swift in Sources */,
 				5C3EFA451F57019D00CE929F /* AppDelegate.swift in Sources */,
 				5C45F5591F88E387001FAA1D /* BaseCoordinator.swift in Sources */,
 				5C45F55D1F88E3FE001FAA1D /* MainScreenCoordinator.swift in Sources */,
+				5C1DAEB51F921F00009A69CC /* WebService.swift in Sources */,
 				5C6C78D81F84F09600D67E2D /* IncomesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -112,9 +112,6 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
             self.present(customAlert, animated: true, completion: nil)
         }
         
-        
-        
-        
     }
     
     
