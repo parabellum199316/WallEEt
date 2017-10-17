@@ -19,6 +19,7 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
     private var expanded:Bool = false
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak var currencyRate: UILabel!
     @IBOutlet weak var currentBalance: UILabel!
     
     @IBOutlet weak var addExpense: UIButton!
@@ -61,21 +62,30 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
     }
     private func bind(){
         toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
-        viewModel.accItems.bind(to: tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
+        
+        viewModel.accItems.drive(tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
             row, item, cell in
             let cellVM = MainScreenTableViewCellViewModel(accItem: item)
             cell.viewModel = cellVM
             cell.configure()
             }.addDisposableTo(disposeBag)
         viewModel.pieData
-            .subscribe(onNext: { (data) in
+            .drive(onNext: { (data) in
                 self.pieChartView.data = data
                 self.pieChartView.setNeedsDisplay()
             }).addDisposableTo(disposeBag)
         
-        viewModel.balance.asObservable().subscribe(onNext:{string in
+        viewModel.balanceDriver.drive(onNext:{string in
             self.currentBalance.text = string
         }).addDisposableTo(disposeBag)
+        
+        //TODO: - Consider logic
+       
+        viewModel.currencyRatesDriver.drive(onNext:{rates in
+            guard rates.count > 0 else{return}
+            self.currencyRate.text = rates[2].name + " \(rates[2].rate)"
+        }).addDisposableTo(disposeBag)
+        
         viewModel.updateChart()
     }
     

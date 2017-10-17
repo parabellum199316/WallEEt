@@ -17,11 +17,18 @@ struct  ExchangeRate {
         self.rate = json[WebService.JSONResponseKeys.RateValue].doubleValue
         self.time = json[WebService.JSONResponseKeys.Time].stringValue
     }
+    init?(dictionary:[String:Any]){
+      let json =   JSON(dictionary: dictionary)
+        self.init(json: json)
+    }
     static func ratesFromJSON(json:[JSON]) -> [ExchangeRate]{
         var rates:[ExchangeRate] = []
         for rate in json{
             rates.append(ExchangeRate(json: rate))
         }
         return rates
+    }
+    var propertyListRepresentation:[String:Any]{
+        return ["Name": self.name, "Rate": self.rate, "Time":self.time]
     }
 }

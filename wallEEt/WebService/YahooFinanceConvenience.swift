@@ -11,7 +11,7 @@ extension WebService{
     
     
     func getCurrencyExRates(_ completionHandler: @escaping (_ results:[ExchangeRate]?, _ error: Error?) -> Void){
-        let selectString = "select * from yahoo.finance.xchange where pair in (\"USDRUB\",\"EURRUB\")"
+        let selectString = "select * from yahoo.finance.xchange where pair in (\"USDRUB\",\"EURRUB\",\"USDUAH\")"
 
         let parameters = ["q":selectString
             ,"format":"json"]

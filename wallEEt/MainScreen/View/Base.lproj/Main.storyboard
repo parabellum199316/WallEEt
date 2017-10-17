@@ -57,6 +57,12 @@
                                     <action selector="addIncomeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dqJ-rv-mB3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bId-xy-aMG">
+                                <rect key="frame" x="0.0" y="84" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yb-FF-FVZ">
                                 <rect key="frame" x="0.0" y="427" width="375" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,6 +129,7 @@
                             <constraint firstItem="QtD-nC-W8h" firstAttribute="top" secondItem="JEj-mv-Vtn" secondAttribute="bottom" constant="20" id="Q5N-W1-GaU"/>
                             <constraint firstItem="JEj-mv-Vtn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="RG7-xO-Pnq"/>
                             <constraint firstItem="kUI-DN-g8F" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="T4V-mg-I4d"/>
+                            <constraint firstItem="bId-xy-aMG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZHD-V2-ly2"/>
                             <constraint firstItem="DlM-S1-iKc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZUX-lH-atI"/>
                             <constraint firstAttribute="trailing" secondItem="kUI-DN-g8F" secondAttribute="trailing" id="bvn-t8-4tk"/>
                             <constraint firstItem="LZL-js-EZE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cA3-Qk-Lud"/>
@@ -133,6 +140,7 @@
                             <constraint firstItem="4Yb-FF-FVZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lfY-tw-vHm"/>
                             <constraint firstItem="QtD-nC-W8h" firstAttribute="leading" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="150" id="oy9-kq-bIu"/>
                             <constraint firstItem="DlM-S1-iKc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="999" constant="25" id="qlb-cK-JoQ"/>
+                            <constraint firstItem="Ptq-Ko-R6i" firstAttribute="top" secondItem="bId-xy-aMG" secondAttribute="bottom" constant="12" id="sdK-8L-4Lf"/>
                             <constraint firstItem="4Yb-FF-FVZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="999" id="y3I-gG-4NO"/>
                             <constraint firstItem="4Yb-FF-FVZ" firstAttribute="top" secondItem="kUI-DN-g8F" secondAttribute="bottom" id="yTV-S7-keu"/>
                         </constraints>
@@ -147,6 +155,7 @@
                         <outlet property="addExpense" destination="Ptq-Ko-R6i" id="xQD-nN-xZm"/>
                         <outlet property="buttonToPieChartViewConstraint" destination="yTV-S7-keu" id="xQj-28-NWE"/>
                         <outlet property="buttonToTopLayoutGuideConstraint" destination="y3I-gG-4NO" id="xJB-XZ-2Yo"/>
+                        <outlet property="currencyRate" destination="bId-xy-aMG" id="VpL-8t-4y4"/>
                         <outlet property="currentBalance" destination="LZL-js-EZE" id="YBx-9R-E3P"/>
                         <outlet property="pieChartView" destination="kUI-DN-g8F" id="e2v-7u-IKc"/>
                         <outlet property="tableToLayoutGuideConstraint" destination="qlb-cK-JoQ" id="ia6-uB-TEh"/>

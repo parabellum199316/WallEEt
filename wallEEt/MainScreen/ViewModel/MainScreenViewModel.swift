@@ -11,7 +11,7 @@ import RxSwift
 import RealmSwift
 import RxRealm
 import Charts
-
+import RxCocoa
 
 struct MainScreenViewModel{
     
@@ -23,32 +23,49 @@ struct MainScreenViewModel{
     //MARK: - Inputs
     let showDetails:AnyObserver<Void>
     let addAccountItem:AnyObserver<PieChartData?>
-   
+    
     
     //MARK: - Outputs
     //Call to show details
     let showDetailsScreen:Observable<Void>
-    let accItems: Observable<[AccountItem]>
-    let pieData:Observable<PieChartData?>
-    let balance = Variable<String>("0")
+    let accItems: Driver<[AccountItem]>
+    let pieData:Driver<PieChartData?>
+   
+    private let balanceVar = Variable<String>("0")
+    var balanceDriver:Driver<String> {
+        return balanceVar.asDriver()
+    }
     
-    //let pieChartVariable = Variable<PieChartData?>(nil)
+    var cachedRates:[ExchangeRate]
     
-    
-    
+    let currencyRates: Variable<[ExchangeRate]>
+    var currencyRatesDriver: Driver<[ExchangeRate]>{
+        return currencyRates.asDriver()
+    }
+    private let USDRUB = PublishSubject<Double>()
+    var USDRUBObs:Observable<Double>{
+        return USDRUB.asObservable()
+    }
     init(){
+        if let propertyList = UserDefaults.standard.object(forKey: "rates") as? [[String:Any]]{
+            cachedRates = propertyList.flatMap{ ExchangeRate(dictionary:$0)
+            }
+        }else{
+            cachedRates = []
+        }
+        currencyRates = Variable<[ExchangeRate]>(cachedRates)
         let _showDetails =  PublishSubject<Void>()
         self.showDetails = _showDetails.asObserver()
         self.showDetailsScreen = _showDetails.asObservable()
+        
         let _pieData = PublishSubject<PieChartData?>()
-        self.pieData = _pieData.asObservable()
+        self.pieData = _pieData.asDriver(onErrorJustReturn: nil)
+        
         self.addAccountItem = _pieData.asObserver()
-        
         let _accItems = Variable<[AccountItem]> ([])
-        self.accItems = _accItems.asObservable()
+        self.accItems = _accItems.asDriver()
        
-        
-       //Get account object
+        //Get account object
         let account = realm.objects(AccountModel.self).first
         if let accountM = account{
             self.accountModel = accountM
@@ -60,8 +77,9 @@ struct MainScreenViewModel{
                 realm.add(accountModel!)
             }
         }
-       //Observe account object
-        let accountObservable =  Observable.from(object: accountModel!)
+       
+        //Observe account object
+        let accountObservable =  Observable.from(object: accountModel!).share()
         //Observe [AccountItem]
         accountObservable.map { acc -> [AccountItem] in
             var accItems = [AccountItem]()
@@ -75,15 +93,13 @@ struct MainScreenViewModel{
                 lhs.date > rhs.date
             })
             }.bind(to: _accItems).addDisposableTo(disposeBag)
+        
         //Observe account balance
         accountObservable.map{ acc -> String in
             return String(acc.balance)
-        }.bind(to:balance).addDisposableTo(disposeBag)
-        WebService.shared().getCurrencyExRates { (rates, error) in
-            for rate in rates!{
-                print(rate.name)
-            }
-        }
+            }.bind(to:balanceVar).addDisposableTo(disposeBag)
+        getCurrencyRates()
+        updateChart()
     }
     
     func addExpensesItem(amount:Double,category:ExpenseCategory,comment:String,date:Date?){
@@ -92,19 +108,35 @@ struct MainScreenViewModel{
             accountModel?.expenses.append(item)
             accountModel?.balance -= amount
         }
-        
+    }
+    
+    func getCurrencyRates(){
+        var ratesArr = [ExchangeRate]()
+        WebService.shared().getCurrencyExRates { (rates, error) in
+            guard (error == nil) else{ return }
+            for rate in rates!{
+                ratesArr.append(rate)
+            }
+            self.USDRUB.onNext(ratesArr[0].rate)
+            self.currencyRates.value = ratesArr
+            let propList = ratesArr.map{$0.propertyListRepresentation}
+            print(propList)
+            UserDefaults.standard.set(propList, forKey: "rates")
+        }
         
     }
+    
     func addIncomesItem(amount:Double,source:IncomeSources,date:Date?){
         let item = IncomesModel(amount:amount,date: date ?? Date(), source:source)
         try! realm.write {
             accountModel?.incomes.append(item)
             accountModel?.balance += amount
         }
-       
+        
     }
     
     func updateChart(){
+        balanceVar.value = String(accountModel!.balance)
         guard accountModel!.expenses.count > 0 || accountModel!.incomes.count > 0 else{return}
         let totalExpensesAmount = accountModel?.expenses.reduce(0){sum, expense in
             return sum + expense.amount
@@ -117,13 +149,9 @@ struct MainScreenViewModel{
         let pieChartData = PieChartDataSet(values: [expensesEntry,incomeEntry], label: nil)
         let data = PieChartData(dataSet: pieChartData)
         pieChartData.colors = [UIColor.red,UIColor.green]
-        balance.value = String(accountModel!.balance)
         addAccountItem.onNext(data)
-
     }
-
-
-   
+    
 }
 
 
