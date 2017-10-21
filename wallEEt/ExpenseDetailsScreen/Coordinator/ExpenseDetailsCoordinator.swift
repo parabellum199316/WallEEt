@@ -10,14 +10,17 @@ import UIKit
 import RxSwift
 
 class ExpenseDetailsCoordinator: BaseCoordinator<Void>{
+    var accItem:AccountItem!
     private let rootViewController: UINavigationController
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
     }
     override func start() -> Observable<Void> {
         let viewController = ExpenseDetailsViewController.initFromStoryboard(name: "ExpenseDetails")
-        let viewModel = ExpenseDetailsViewModel()
+        let viewModel = ExpenseDetailsViewModel(accItem:accItem)
+        
         viewController.viewModel = viewModel
+        
         let cancel = viewModel.didCancel
         rootViewController.pushViewController(viewController, animated: true)
         return  cancel.do(onNext: { [weak self] _ in self?.rootViewController.popViewController(animated: true)}).take(1)

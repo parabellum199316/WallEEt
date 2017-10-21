@@ -11,12 +11,13 @@ import RxSwift
 
 struct ExpenseDetailsViewModel{
     //Input
+    
     let titleText:Observable<String>
     let cancel:AnyObserver<Void>
     //Output
     let didCancel:Observable<Void>
-    init(){
-        let _behSubj = BehaviorSubject<String>(value: "test2")
+    init(accItem:AccountItem){
+        let _behSubj = BehaviorSubject<String>(value: "\(accItem.amount)")
         self.titleText = _behSubj.asObservable().map{"\($0)"}
         let _cancel = PublishSubject<Void>()
         self.cancel = _cancel.asObserver()

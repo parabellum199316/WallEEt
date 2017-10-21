@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wallEEt/WebService/YahooFinanceConvenience.swift"
-            timestampString = "529765828.939918"
+            timestampString = "530032973.502524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wallEEt/WebService/YahooFinanceConvenience.swift"
-            timestampString = "529765828.940184"
+            timestampString = "530032973.503036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wallEEt/WebService/YahooFinanceConvenience.swift"
-            timestampString = "529765828.940444"
+            timestampString = "530032973.503403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
@@ -58,12 +58,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wallEEt/WebService/YahooFinanceConvenience.swift"
-            timestampString = "529765828.940685"
+            timestampString = "530032973.503772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "getCurrencyExRates(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wallEEt/MainScreen/ViewModel/MainScreenViewModel.swift"
+            timestampString = "530287221.543329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "getCurrencyRates()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

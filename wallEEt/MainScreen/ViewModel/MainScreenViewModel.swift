@@ -21,16 +21,16 @@ struct MainScreenViewModel{
     var accountModel:AccountModel?
     
     //MARK: - Inputs
-    let showDetails:AnyObserver<Void>
+    let showDetails:AnyObserver<AccountItem>
     let addAccountItem:AnyObserver<PieChartData?>
     
     
     //MARK: - Outputs
     //Call to show details
-    let showDetailsScreen:Observable<Void>
+    let showDetailsScreen:Observable<AccountItem>
     let accItems: Driver<[AccountItem]>
     let pieData:Driver<PieChartData?>
-   
+    
     private let balanceVar = Variable<String>("0")
     var balanceDriver:Driver<String> {
         return balanceVar.asDriver()
@@ -46,6 +46,7 @@ struct MainScreenViewModel{
     var USDRUBObs:Observable<Double>{
         return USDRUB.asObservable()
     }
+    var convertedBalance:Driver<String>
     init(){
         if let propertyList = UserDefaults.standard.object(forKey: "rates") as? [[String:Any]]{
             cachedRates = propertyList.flatMap{ ExchangeRate(dictionary:$0)
@@ -54,7 +55,16 @@ struct MainScreenViewModel{
             cachedRates = []
         }
         currencyRates = Variable<[ExchangeRate]>(cachedRates)
-        let _showDetails =  PublishSubject<Void>()
+        
+        convertedBalance = Observable.combineLatest(currencyRates.asObservable().shareReplayLatestWhileConnected(), balanceVar.asObservable()){first, second -> String in
+            if first.count > 2{
+                let balanceDouble = Double(second)!
+                return String(format: "%.1f $", ((balanceDouble / first[2].rate)))}else{
+                return "$"
+            }
+            }.asDriver(onErrorJustReturn: "$")
+        
+        let _showDetails =  PublishSubject<AccountItem>()
         self.showDetails = _showDetails.asObserver()
         self.showDetailsScreen = _showDetails.asObservable()
         
@@ -64,7 +74,7 @@ struct MainScreenViewModel{
         self.addAccountItem = _pieData.asObserver()
         let _accItems = Variable<[AccountItem]> ([])
         self.accItems = _accItems.asDriver()
-       
+        
         //Get account object
         let account = realm.objects(AccountModel.self).first
         if let accountM = account{
@@ -77,7 +87,7 @@ struct MainScreenViewModel{
                 realm.add(accountModel!)
             }
         }
-       
+        
         //Observe account object
         let accountObservable =  Observable.from(object: accountModel!).share()
         //Observe [AccountItem]
@@ -100,6 +110,7 @@ struct MainScreenViewModel{
             }.bind(to:balanceVar).addDisposableTo(disposeBag)
         getCurrencyRates()
         updateChart()
+        
     }
     
     func addExpensesItem(amount:Double,category:ExpenseCategory,comment:String,date:Date?){

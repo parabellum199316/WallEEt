@@ -21,7 +21,7 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
     
     @IBOutlet weak var currencyRate: UILabel!
     @IBOutlet weak var currentBalance: UILabel!
-    
+    @IBOutlet weak var balanceInUSD: UILabel!
     @IBOutlet weak var addExpense: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pieChartView: PieChartView!
@@ -61,8 +61,13 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
         showAlert(type: .income)
     }
     private func bind(){
-        toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
-        
+        //toDetailsButton.rx.tap.bind(to:viewModel.showDetails).disposed(by: disposeBag)
+        tableView.rx.modelSelected(AccountItem.self).subscribe(onNext:{item in
+            self.viewModel.showDetails.onNext(item)
+            if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
+            }
+        }).addDisposableTo(disposeBag)
         viewModel.accItems.drive(tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
             row, item, cell in
             let cellVM = MainScreenTableViewCellViewModel(accItem: item)
@@ -82,10 +87,12 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
         //TODO: - Consider logic
        
         viewModel.currencyRatesDriver.drive(onNext:{rates in
-            guard rates.count > 0 else{return}
+            guard rates.count > 2 else{return}
             self.currencyRate.text = rates[2].name + " \(rates[2].rate)"
         }).addDisposableTo(disposeBag)
-        
+        viewModel.convertedBalance.drive(onNext:{balanceInUSD in
+            self.balanceInUSD.text = balanceInUSD
+        }).addDisposableTo(disposeBag)
         viewModel.updateChart()
     }
     
