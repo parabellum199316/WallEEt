@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "wallEEt/MainScreen/ViewModel/MainScreenViewModel.swift"
-            timestampString = "530287221.543329"
+            timestampString = "530294906.88627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "getCurrencyRates()"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "deleteItem(item:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

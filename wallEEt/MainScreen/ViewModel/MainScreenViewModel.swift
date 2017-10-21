@@ -23,7 +23,7 @@ struct MainScreenViewModel{
     //MARK: - Inputs
     let showDetails:AnyObserver<AccountItem>
     let addAccountItem:AnyObserver<PieChartData?>
-    
+    //let deleteItem:AnyObserver<AccountItem>
     
     //MARK: - Outputs
     //Call to show details
@@ -145,7 +145,23 @@ struct MainScreenViewModel{
         }
         
     }
-    
+    func deleteItem(item:AccountItem){
+        if item is ExpensesModel{
+          let index =   accountModel?.expenses.index(of: item as! ExpensesModel)
+            try! realm.write {
+                accountModel?.expenses.remove(objectAtIndex: index!)
+                accountModel?.balance += item.amount
+            }
+           
+        }else{
+            let index  = accountModel?.incomes.index(of: item as! IncomesModel)
+            try! realm.write {
+                accountModel?.incomes.remove(objectAtIndex: index!)
+                accountModel?.balance -= item.amount
+            }
+        }
+        updateChart()
+    }
     func updateChart(){
         balanceVar.value = String(accountModel!.balance)
         guard accountModel!.expenses.count > 0 || accountModel!.incomes.count > 0 else{return}

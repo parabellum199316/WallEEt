@@ -68,6 +68,9 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
                 self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
             }
         }).addDisposableTo(disposeBag)
+        tableView.rx.modelDeleted(AccountItem.self).subscribe(onNext:{ item in
+            self.viewModel.deleteItem(item: item)
+        }).addDisposableTo(disposeBag)
         viewModel.accItems.drive(tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
             row, item, cell in
             let cellVM = MainScreenTableViewCellViewModel(accItem: item)
