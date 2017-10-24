@@ -19,6 +19,10 @@
 		5C3EFA4A1F57019D00CE929F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA481F57019D00CE929F /* Main.storyboard */; };
 		5C3EFA4C1F57019D00CE929F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA4B1F57019D00CE929F /* Assets.xcassets */; };
 		5C3EFA4F1F57019D00CE929F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EFA4D1F57019D00CE929F /* LaunchScreen.storyboard */; };
+		5C3FB74B1F9F386C000D34D1 /* ExpensesIncomesInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FB74A1F9F386C000D34D1 /* ExpensesIncomesInfoCoordinator.swift */; };
+		5C3FB74D1F9F3895000D34D1 /* ExpensesIncomes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3FB74C1F9F3895000D34D1 /* ExpensesIncomes.storyboard */; };
+		5C3FB74F1F9F38FA000D34D1 /* ExpensesIncomesInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FB74E1F9F38FA000D34D1 /* ExpensesIncomesInfoViewController.swift */; };
+		5C3FB7511F9F3911000D34D1 /* ExpensesIncomesInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FB7501F9F3911000D34D1 /* ExpensesIncomesInfoViewModel.swift */; };
 		5C45F5571F88E316001FAA1D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45F5561F88E316001FAA1D /* AppCoordinator.swift */; };
 		5C45F5591F88E387001FAA1D /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45F5581F88E387001FAA1D /* BaseCoordinator.swift */; };
 		5C45F55B1F88E3C0001FAA1D /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45F55A1F88E3C0001FAA1D /* StoryboardInitializable.swift */; };
@@ -52,6 +56,10 @@
 		5C3EFA4B1F57019D00CE929F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C3EFA4E1F57019D00CE929F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C3EFA501F57019D00CE929F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C3FB74A1F9F386C000D34D1 /* ExpensesIncomesInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesIncomesInfoCoordinator.swift; sourceTree = "<group>"; };
+		5C3FB74C1F9F3895000D34D1 /* ExpensesIncomes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpensesIncomes.storyboard; sourceTree = "<group>"; };
+		5C3FB74E1F9F38FA000D34D1 /* ExpensesIncomesInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesIncomesInfoViewController.swift; sourceTree = "<group>"; };
+		5C3FB7501F9F3911000D34D1 /* ExpensesIncomesInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesIncomesInfoViewModel.swift; sourceTree = "<group>"; };
 		5C45F5561F88E316001FAA1D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5C45F5581F88E387001FAA1D /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		5C45F55A1F88E3C0001FAA1D /* StoryboardInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
@@ -129,12 +137,48 @@
 				5C6C78D41F84DF7700D67E2D /* MODELS */,
 				5CAA50711F813BFC00E80D5F /* Library */,
 				5CAA50761F813F2C00E80D5F /* ExpenseDetailsScreen */,
+				5C3FB7461F9F37B6000D34D1 /* ExpensesIncomesInfo */,
 				5CAA506C1F813B3D00E80D5F /* MainScreen */,
 				5C3EFA4B1F57019D00CE929F /* Assets.xcassets */,
 				5C3EFA4D1F57019D00CE929F /* LaunchScreen.storyboard */,
 				5C3EFA501F57019D00CE929F /* Info.plist */,
 			);
 			path = wallEEt;
+			sourceTree = "<group>";
+		};
+		5C3FB7461F9F37B6000D34D1 /* ExpensesIncomesInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5C3FB7471F9F381D000D34D1 /* Coordinator */,
+				5C3FB7481F9F3824000D34D1 /* View */,
+				5C3FB7491F9F382B000D34D1 /* ViewModel */,
+			);
+			path = ExpensesIncomesInfo;
+			sourceTree = "<group>";
+		};
+		5C3FB7471F9F381D000D34D1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5C3FB74A1F9F386C000D34D1 /* ExpensesIncomesInfoCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		5C3FB7481F9F3824000D34D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C3FB74C1F9F3895000D34D1 /* ExpensesIncomes.storyboard */,
+				5C3FB74E1F9F38FA000D34D1 /* ExpensesIncomesInfoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5C3FB7491F9F382B000D34D1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5C3FB7501F9F3911000D34D1 /* ExpensesIncomesInfoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5C45F5531F88E2AC001FAA1D /* Coordinator */ = {
@@ -324,6 +368,7 @@
 			files = (
 				5C3EFA4F1F57019D00CE929F /* LaunchScreen.storyboard in Resources */,
 				5C3EFA4C1F57019D00CE929F /* Assets.xcassets in Resources */,
+				5C3FB74D1F9F3895000D34D1 /* ExpensesIncomes.storyboard in Resources */,
 				5CAA507D1F813FCB00E80D5F /* ExpenseDetails.storyboard in Resources */,
 				5C3EFA4A1F57019D00CE929F /* Main.storyboard in Resources */,
 			);
@@ -412,6 +457,7 @@
 				5C369BE91F8A621C00F9542B /* MainScreenTableViewCellViewModel.swift in Sources */,
 				5CAA50811F81434700E80D5F /* MainScreenViewModel.swift in Sources */,
 				5CAA507B1F813FB100E80D5F /* ExpenseDetailsViewController.swift in Sources */,
+				5C3FB74B1F9F386C000D34D1 /* ExpensesIncomesInfoCoordinator.swift in Sources */,
 				5C1DAEBB1F923BB8009A69CC /* ExchangeRate.swift in Sources */,
 				5C1DAEB71F9226A9009A69CC /* YahooFinanceExchangeConstants.swift in Sources */,
 				5C6512AC1F88F48C00D8D438 /* ExpenseDetailsCoordinator.swift in Sources */,
@@ -427,6 +473,8 @@
 				5C45F55D1F88E3FE001FAA1D /* MainScreenCoordinator.swift in Sources */,
 				5C1DAEB51F921F00009A69CC /* WebService.swift in Sources */,
 				5C6C78D81F84F09600D67E2D /* IncomesModel.swift in Sources */,
+				5C3FB7511F9F3911000D34D1 /* ExpensesIncomesInfoViewModel.swift in Sources */,
+				5C3FB74F1F9F38FA000D34D1 /* ExpensesIncomesInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

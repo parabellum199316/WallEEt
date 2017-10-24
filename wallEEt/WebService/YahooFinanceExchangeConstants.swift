@@ -20,7 +20,7 @@ extension WebService{
         static let Results = "results"
         static let Rates = "rate"
         static let RateName = "Name"
-        static let RateValue = "Rate"
+        static let RateValue = "Ask"
         static let Time = "Time"
     }
     

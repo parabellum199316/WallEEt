@@ -24,11 +24,18 @@ class MainScreenCoordinator:BaseCoordinator<Void>{
             guard let `self` = self else { return  .empty() }
             return self.showDetailScreen(on: navController, item:item)
             }.subscribe().disposed(by: disposeBag)
+        vm.showInfoScreen.flatMap{[weak self] index -> Observable<Void> in
+            guard let `self` = self else {return .empty()}
+            return self.showAccItemsInfoScreen(on: navController, index: index)}.subscribe().disposed(by: disposeBag)
         window.rootViewController = navController
         window.makeKeyAndVisible()
         return Observable.never()
     }
-    
+    private func showAccItemsInfoScreen(on viewController:UINavigationController, index:Int) -> Observable<Void>{
+        let itemInfoCoordinator = ExpensesIncomesInfoCoordinator(rootViewController: viewController)
+        itemInfoCoordinator.accItemsIndex = index
+        return coordinate(to: itemInfoCoordinator)
+    }
     private func showDetailScreen(on viewController: UINavigationController, item:AccountItem) -> Observable<Void>{
         let exDetailsCoordinator = ExpenseDetailsCoordinator(rootViewController: viewController)
         exDetailsCoordinator.accItem = item

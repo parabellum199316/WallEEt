@@ -37,6 +37,13 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
     @IBOutlet weak var buttonToTopLayoutGuideConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        pieChartView.legend.enabled = false
+        pieChartView.chartDescription?.enabled = false
+        pieChartView.transparentCircleColor = UIColor.black.withAlphaComponent(0.2)
+        pieChartView.transparentCircleRadiusPercent = 0.6
+        pieChartView.holeRadiusPercent = 0.55
+        pieChartView.holeColor = UIColor.red.withAlphaComponent(0)
+        pieChartView.delegate = self
         tableTopToButtonConstraint.isActive = true
         tableToLayoutGuideConstraint.isActive = false
         buttonToTopLayoutGuideConstraint.isActive = false
@@ -68,18 +75,22 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
                 self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
             }
         }).addDisposableTo(disposeBag)
+        
         tableView.rx.modelDeleted(AccountItem.self).subscribe(onNext:{ item in
             self.viewModel.deleteItem(item: item)
         }).addDisposableTo(disposeBag)
+        
         viewModel.accItems.drive(tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
             row, item, cell in
             let cellVM = MainScreenTableViewCellViewModel(accItem: item)
             cell.viewModel = cellVM
             cell.configure()
             }.addDisposableTo(disposeBag)
+        
         viewModel.pieData
             .drive(onNext: { (data) in
                 self.pieChartView.data = data
+                self.pieChartView.notifyDataSetChanged()
                 self.pieChartView.setNeedsDisplay()
             }).addDisposableTo(disposeBag)
         
@@ -88,14 +99,16 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
         }).addDisposableTo(disposeBag)
         
         //TODO: - Consider logic
-       
+        
         viewModel.currencyRatesDriver.drive(onNext:{rates in
             guard rates.count > 2 else{return}
             self.currencyRate.text = rates[2].name + " \(rates[2].rate)"
         }).addDisposableTo(disposeBag)
+        
         viewModel.convertedBalance.drive(onNext:{balanceInUSD in
             self.balanceInUSD.text = balanceInUSD
         }).addDisposableTo(disposeBag)
+        
         viewModel.updateChart()
     }
     
@@ -147,7 +160,6 @@ extension MainScreenViewController:AddExpenseItemAlertDelegate{
         
     }
     
-    
 }
 
 extension MainScreenViewController:AddIncomesItemAlertDelegate{
@@ -163,3 +175,13 @@ extension MainScreenViewController:AddIncomesItemAlertDelegate{
     
     
 }
+extension MainScreenViewController:ChartViewDelegate{
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        if let dataSet = chartView.data?.dataSets[highlight.dataSetIndex]{
+            let sliceIndex:Int = dataSet.entryIndex(entry: entry)
+            viewModel.showInfo.onNext(sliceIndex)
+            print("Selected slice index: \(sliceIndex)")
+        }
+    }
+}
+

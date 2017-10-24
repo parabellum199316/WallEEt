@@ -29,10 +29,9 @@ class ExpenseDetailsViewController: UIViewController,StoryboardInitializable{
 
     
     
-    deinit {
-        print("dettails deinit")
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.cancel.onNext(())
     }
-   
     
     
     /*

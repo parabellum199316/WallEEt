@@ -19,14 +19,18 @@ struct MainScreenViewModel{
     let disposeBag = DisposeBag()
     let realm = try! Realm()
     var accountModel:AccountModel?
+    private   let sequence = Observable<Int>.interval(25,
+                                                      scheduler: MainScheduler.instance)
     
     //MARK: - Inputs
+    let showInfo:AnyObserver<Int>
     let showDetails:AnyObserver<AccountItem>
     let addAccountItem:AnyObserver<PieChartData?>
     //let deleteItem:AnyObserver<AccountItem>
     
     //MARK: - Outputs
     //Call to show details
+    let showInfoScreen:Observable<Int>
     let showDetailsScreen:Observable<AccountItem>
     let accItems: Driver<[AccountItem]>
     let pieData:Driver<PieChartData?>
@@ -68,6 +72,10 @@ struct MainScreenViewModel{
         self.showDetails = _showDetails.asObserver()
         self.showDetailsScreen = _showDetails.asObservable()
         
+        let _showInfo = PublishSubject<Int>()
+        self.showInfo = _showInfo.asObserver()
+        self.showInfoScreen = _showInfo.asObservable()
+        
         let _pieData = PublishSubject<PieChartData?>()
         self.pieData = _pieData.asDriver(onErrorJustReturn: nil)
         
@@ -106,8 +114,7 @@ struct MainScreenViewModel{
         
         //Observe account balance
         accountObservable.map{ acc -> String in
-            return String(acc.balance)
-            }.bind(to:balanceVar).addDisposableTo(disposeBag)
+            return String(acc.balance)}
         getCurrencyRates()
         updateChart()
         
@@ -174,7 +181,10 @@ struct MainScreenViewModel{
         let expensesEntry:PieChartDataEntry = PieChartDataEntry(value: Double(totalExpensesAmount!), label: "Expenses")
         let incomeEntry: PieChartDataEntry = PieChartDataEntry(value: Double(totalIncomesAmount!), label: "Incomes")
         let pieChartData = PieChartDataSet(values: [expensesEntry,incomeEntry], label: nil)
+        pieChartData.sliceSpace = 3
+        
         let data = PieChartData(dataSet: pieChartData)
+        
         pieChartData.colors = [UIColor.red,UIColor.green]
         addAccountItem.onNext(data)
     }
