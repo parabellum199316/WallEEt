@@ -13,9 +13,9 @@ enum IncomeSources:String{
 }
 class IncomesModel:Object,AccountItem{
     //Properties
-    dynamic var amount:Double = 0
-    dynamic var date:Date!
-    dynamic var source:String = ""
+    @objc dynamic var amount:Double = 0
+    @objc dynamic var date:Date!
+    @objc dynamic var source:String = ""
     //Init
     convenience init(amount:Double,date:Date,source:IncomeSources){
         self.init()

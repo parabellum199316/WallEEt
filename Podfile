@@ -7,9 +7,9 @@ target 'wallEEt' do
 
   # Pods for wallEEt
 	
-pod 'RxSwift', '~> 3.6.1'
-pod 'RxCocoa', '~> 3.6.1'
-pod 'Charts', '3.0.3'
+pod 'RxSwift', '4.0.0'
+pod 'RxCocoa', '4.0.0'
+pod 'Charts', '3.0.4'
 pod 'RealmSwift'
 pod 'RxRealm'
 pod 'HGCircularSlider', '~> 2.0.0'

@@ -26,7 +26,7 @@ struct MainScreenViewModel{
     let showInfo:AnyObserver<Int>
     let showDetails:AnyObserver<AccountItem>
     let addAccountItem:AnyObserver<PieChartData?>
-    //let deleteItem:AnyObserver<AccountItem>
+   
     
     //MARK: - Outputs
     //Call to show details
@@ -60,7 +60,7 @@ struct MainScreenViewModel{
         }
         currencyRates = Variable<[ExchangeRate]>(cachedRates)
         
-        convertedBalance = Observable.combineLatest(currencyRates.asObservable().shareReplayLatestWhileConnected(), balanceVar.asObservable()){first, second -> String in
+        convertedBalance = Observable.combineLatest(currencyRates.asObservable().share(), balanceVar.asObservable()){first, second -> String in
             if first.count > 2{
                 let balanceDouble = Double(second)!
                 return String(format: "%.1f $", ((balanceDouble / first[2].rate)))}else{
@@ -110,12 +110,12 @@ struct MainScreenViewModel{
             return accItems.prefix(100).sorted(by: { (lhs, rhs) -> Bool in
                 lhs.date > rhs.date
             })
-            }.bind(to: _accItems).addDisposableTo(disposeBag)
+            }.bind(to: _accItems).disposed(by: disposeBag)
         
         //Observe account balance
         accountObservable.map{ acc -> String in
             return String(acc.balance)}
-        getCurrencyRates()
+        //getCurrencyRates()
         updateChart()
         
     }
@@ -156,19 +156,19 @@ struct MainScreenViewModel{
         if item is ExpensesModel{
           let index =   accountModel?.expenses.index(of: item as! ExpensesModel)
             try! realm.write {
-                accountModel?.expenses.remove(objectAtIndex: index!)
+                accountModel?.expenses.remove(at: index!)
                 accountModel?.balance += item.amount
             }
-           
         }else{
             let index  = accountModel?.incomes.index(of: item as! IncomesModel)
             try! realm.write {
-                accountModel?.incomes.remove(objectAtIndex: index!)
+                accountModel?.incomes.remove(at: index!)
                 accountModel?.balance -= item.amount
             }
         }
         updateChart()
     }
+    
     func updateChart(){
         balanceVar.value = String(accountModel!.balance)
         guard accountModel!.expenses.count > 0 || accountModel!.incomes.count > 0 else{return}

@@ -74,40 +74,40 @@ class MainScreenViewController: UIViewController,StoryboardInitializable {
             if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
                 self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         tableView.rx.modelDeleted(AccountItem.self).subscribe(onNext:{ item in
             self.viewModel.deleteItem(item: item)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         viewModel.accItems.drive(tableView.rx.items(cellIdentifier: "AccItemCell", cellType: MainScreenTableViewCell.self)){
             row, item, cell in
             let cellVM = MainScreenTableViewCellViewModel(accItem: item)
             cell.viewModel = cellVM
             cell.configure()
-            }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
         
         viewModel.pieData
             .drive(onNext: { (data) in
                 self.pieChartView.data = data
                 self.pieChartView.notifyDataSetChanged()
-                self.pieChartView.setNeedsDisplay()
-            }).addDisposableTo(disposeBag)
+                    self.pieChartView.setNeedsDisplay()
+            }).disposed(by: disposeBag)
         
         viewModel.balanceDriver.drive(onNext:{string in
             self.currentBalance.text = string
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         //TODO: - Consider logic
         
-        viewModel.currencyRatesDriver.drive(onNext:{rates in
-            guard rates.count > 2 else{return}
-            self.currencyRate.text = rates[2].name + " \(rates[2].rate)"
-        }).addDisposableTo(disposeBag)
+//        viewModel.currencyRatesDriver.drive(onNext:{rates in
+//            guard rates.count > 2 else{return}
+//            self.currencyRate.text = rates[2].name + " \(rates[2].rate)"
+//        }).disposed(by: disposeBag)
         
         viewModel.convertedBalance.drive(onNext:{balanceInUSD in
             self.balanceInUSD.text = balanceInUSD
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         viewModel.updateChart()
     }

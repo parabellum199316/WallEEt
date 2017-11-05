@@ -19,7 +19,7 @@ This library is a thin wrapper around __RealmSwift__ ( [Realm Docs](https://real
 
 RxRealm can be used to create `Observable`s from objects of type `Results`, `List`, `LinkingObjects` or `AnyRealmCollection`. These types are typically used to load and observe object collections from the Realm Mobile Database.
 
-##### `Observable.collection(from:synchronizedStart:)`
+##### `Observable.collection(from:synchronousStart:)`
 Emits an event each time the collection changes:
 
 ```swift
@@ -35,9 +35,9 @@ Observable.collection(from: laps)
   })
 ```
 
-The above prints out "X laps" each time a lap is added or removed from the database. If you set `synchronizedStart` to `true` (the default value), the first element will be emitted synchronously - e.g. when you're binding UI you might not be able for an asynchronous notification to come through.
+The above prints out "X laps" each time a lap is added or removed from the database. If you set `synchronousStart` to `true` (the default value), the first element will be emitted synchronously - e.g. when you're binding UI you might not be able for an asynchronous notification to come through.
 
-##### `Observable.array(from:synchronizedStart:)`
+##### `Observable.array(from:synchronousStart:)`
 Upon each change fetches a snapshot of the Realm collection and converts it to an array value (for example if you want to use array methods on the collection):
 
 ```swift
@@ -53,12 +53,12 @@ Observable.array(from: laps)
   })
 ```
 
-##### `Observable.changeset(from:synchronizedStart:)`
+##### `Observable.changeset(from:synchronousStart:)`
 Emits every time the collection changes and provides the exact indexes that has been deleted, inserted or updated:
 
 ```swift
 let realm = try! Realm()
-let laps = realm.objects(Lap.self))
+let laps = realm.objects(Lap.self)
 
 Observable.changeset(from: laps)
   .subscribe(onNext: { results, changes in
@@ -75,7 +75,7 @@ Observable.changeset(from: laps)
   })
 ```
 
-##### `Observable.arrayWithChangeset(from:synchronizedStart:)`
+##### `Observable.arrayWithChangeset(from:synchronousStart:)`
 Combines the result of `Observable.array(from:)` and `Observable.changeset(from:)` returning an `Observable<Array<T>, RealmChangeset?>`
 
 ```swift
@@ -148,7 +148,7 @@ Observable.from(messages)
 
 ###### `Realm.rx.add(configuration:)`
 
-Writing to a **custom** Realm. If you want to switch threads and not use the default Realm, provide a `Realm.Configuration`:
+Writing to a **custom** Realm. If you want to switch threads and not use the default Realm, provide a `Realm.Configuration`. You an also provide an error handler for the observer to be called if either creating the realm reference or the write transaction raise an error:
 
 ```swift
 var config = Realm.Configuration()
@@ -157,7 +157,13 @@ var config = Realm.Configuration()
 let messages = [Message("hello"), Message("world")]
 Observable.from(messages)
   .observeOn( /* you can switch threads here */ )     
-  .subscribe(Realm.rx.add(configuration: config))
+  .subscribe(Realm.rx.add(configuration: config, onError: {elements, error in
+    if let elements = elements {
+      print("Error \(error.localizedDescription) while saving objects \(String(describing: elements))")
+    } else {
+      print("Error \(error.localizedDescription) while opening realm.")
+    }
+  }))
 ```
 
 If you want to create a Realm on a different thread manually, allowing you to handle errors, you can do that too:

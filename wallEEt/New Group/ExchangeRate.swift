@@ -18,7 +18,7 @@ struct  ExchangeRate {
         self.time = json[WebService.JSONResponseKeys.Time].stringValue
     }
     init?(dictionary:[String:Any]){
-      let json =   JSON(dictionary: dictionary)
+      let json = JSON(dictionary)
         self.init(json: json)
     }
     static func ratesFromJSON(json:[JSON]) -> [ExchangeRate]{

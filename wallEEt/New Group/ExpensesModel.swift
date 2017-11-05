@@ -13,10 +13,10 @@ enum ExpenseCategory:String {
 }
 class ExpensesModel:Object,AccountItem{
     //Properties
-    dynamic var amount: Double = 0
-    dynamic var date: Date!
-    dynamic var comment: String = ""
-    dynamic var category:String = "other"
+    @objc dynamic var amount: Double = 0
+    @objc dynamic var date: Date!
+    @objc dynamic var comment: String = ""
+    @objc dynamic var category:String = "other"
     
     //Init
     convenience init(amount:Double, date: Date,category:ExpenseCategory, comment:String){
